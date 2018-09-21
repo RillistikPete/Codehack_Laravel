@@ -1,1 +1,5 @@
-@extends('layouts.admin');
+
+
+@extends('layouts.admin')
+
+<h1>Admin</h1>
