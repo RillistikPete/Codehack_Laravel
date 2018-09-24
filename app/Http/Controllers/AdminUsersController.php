@@ -30,7 +30,7 @@ class AdminUsersController extends Controller
     {
         //if you put 'id'/,'name' backwards here it will not order roles the same:
         $roles = Role::pluck('name', 'id')->all();
-        // dd($roles);
+        
         return view('admin.users.create', compact('roles'));
     }
 
@@ -45,10 +45,10 @@ class AdminUsersController extends Controller
         // UsersRequest in Requests! 
     public function store(UsersRequest $request)
     {
-        // User::create($request->all());
+        User::create($request->all());
 
-        // return redirect('/admin/users');
-        return ($request->all());
+        return redirect('/admin/users');
+        // return ($request->all());
     }
 
         /**
