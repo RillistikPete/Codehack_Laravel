@@ -5,7 +5,8 @@
 
     <h1>Create Users</h1>
 
-    {!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store']) !!}
+
+    {!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store', 'files'=>true]) !!}
 
         <div class='form-group'>
             {!! Form::label('name', 'Name:') !!}
@@ -21,21 +22,31 @@
             {!! Form::label('role_id', 'Role:') !!}
             {!! Form::select('role_id', [''=>'Choose An Option'] + $roles, null, ['class'=>'form control']) !!}
         </div>
+       
+        <div class='form-group'>
+            {!! Form::label('is_active', 'Status:') !!}
+            {!! Form::select('is_active', array(1 => 'Active', 0 => 'Offline') ,0, ['class'=>'form control']) !!}
+        </div>
         
         <div class='form-group'>
             {!! Form::label('password', 'Password:') !!}
             {!! Form::password('password', ['class'=>'form control']) !!}
         </div>
-
+        
         <div class='form-group'>
-            {!! Form::label('title', 'Title:') !!}
-            {!! Form::text('title', null, ['class'=>'form control']) !!}
+            {!! Form::label('file', 'File:') !!}
+            {!! Form::file('file', null, ['class'=>'form control']) !!}
         </div>
 
         <div class='form-group'>
             {!! Form::submit('Create User', null, ['class'=>'btn btn-primary']) !!}
         </div>
+
     {!! Form::close() !!}
 
+
+
+    @include('includes.form_error')
+       
 
 @stop
