@@ -6,6 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Photo extends Model
 {
+    //protected $placehold = '/images/placeholder.jpg';
+
+    protected $uploads = '/images/';
+
     protected $fillable = ['file'];
 
+    public function getFileAttribute($photo){
+        return $this->uploads . $photo;
+    }
+
+    // public function showPlaceholdPhoto($photo) {
+    //     return $this->placehold;
+    // }
 }
