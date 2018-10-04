@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\User;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,8 +24,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', function() {
     return view('admin.index');
 });
-//Going to create a route group for middlewares
 
-//** Resource will create routes for you:
-Route::resource('/admin/users', 'AdminUsersController');
+Route::get('/logout', function() {
+    Auth::logout();
+    return redirect('/');
+});
+
+// ** Route group for middlewares
+Route::group(['middleware'=>'admin'], function() {
+
+    //** Resource will create routes for you:
+    Route::resource('/admin/users', 'AdminUsersController');
+    Route::resource('/admin/posts', 'AdminPostsController');
+});    
 

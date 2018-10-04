@@ -8,6 +8,7 @@ class Photo extends Model
 {
     //protected $placehold = '/images/placeholder.jpg';
 
+    //ACCESSOR:
     protected $uploads = '/images/';
 
     protected $fillable = ['file'];

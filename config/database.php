@@ -50,7 +50,8 @@ return [
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
-            'strict' => true,
+            //changing this from true to false to prevent "[x] doesn't have default value"
+            'strict' => false,
             'engine' => null,
         ],
 

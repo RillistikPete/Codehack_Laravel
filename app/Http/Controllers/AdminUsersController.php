@@ -8,6 +8,7 @@ use App\Role;
 use App\User;
 use App\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminUsersController extends Controller
 {
@@ -112,7 +113,7 @@ class AdminUsersController extends Controller
         //include use UsersEditRequest at top
         $user = User::findOrFail($id);
 
-        // If no password, do request without it. If not, encrypt it
+        // If no password, do request without it. If not, encrypt it:
         if(trim($request->password) == '') {
 
             $input = $request->except('password');
@@ -123,13 +124,14 @@ class AdminUsersController extends Controller
             $input['password'] = bcrypt($request->password);
         }
 
-
-        if($request->file('photo_id'))
+        //Creates (moves) photo into images folder, updates this 'file' part of request:
+        if($file = $request->file('photo_id'))
         {
             $name = time() . $file->getClientOriginalName();
             $file->move('images', $name);
+            $photo = Photo::create(['file'=>$name]);
+            $input['photo_id'] = $photo->id;
         }
-        $input['photo_id'] = $photo->id;
         $user->update($input);
         return redirect('/admin/users');
     }
@@ -142,6 +144,19 @@ class AdminUsersController extends Controller
          */
     public function destroy($id)
     {
-        //
+        // Illuminate\Support\Facades\Session;
+        $user = User::findOrFail($id);
+
+        // Delete file from images folder:
+        // Don't have to use "/images" bc we have an ACCESSOR in Photo.php model!
+        // unlink(public_path() . "/images" . $user->photo->file);
+        unlink(public_path() . $user->photo->file);
+        $user->delete();
+
+        Session::flash('deleted_user', 'User has been deleted.');
+
+        return redirect('/admin/users');
+
+
     }
 }
