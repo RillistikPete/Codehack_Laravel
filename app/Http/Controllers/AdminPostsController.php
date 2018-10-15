@@ -80,7 +80,10 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.posts.edit');
+        $post = Post::findOrFail($id);
+        //had to add pluck for both post and categories in edit posts - edit.blade.php
+        $categories = Category::pluck('name', 'id')->all();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -92,10 +95,22 @@ class AdminPostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        //again, checking to see if photo exists, if not, create it:
+        if($file = $request->file('photo_id')) {
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['file'=>$name]);
+            $input['photo_id'] = $photo->id;
+        }
+        //see same logic in @store, we are eliminating lines
+        Auth::user()->posts()->whereId($id)->first()->update($input);
+
+        return redirect('/admin/posts');
+        
     }
 
-    /**
+    /** 
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -103,6 +118,11 @@ class AdminPostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        
+        unlink(public_path() . $post->photo->file);
+        $post->delete();
+
+        return redirect('/admin/posts');
     }
 }

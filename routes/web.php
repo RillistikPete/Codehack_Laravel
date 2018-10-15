@@ -36,5 +36,6 @@ Route::group(['middleware'=>'admin'], function() {
     //** Resource will create routes for you:
     Route::resource('/admin/users', 'AdminUsersController');
     Route::resource('/admin/posts', 'AdminPostsController');
+    Route::resource('/admin/categories', 'AdminCategoriesController');
 });    
 

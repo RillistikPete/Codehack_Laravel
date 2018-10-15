@@ -21,6 +21,9 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->timestamps();
+            // Foreign key constraints are used to force referential
+            // integrity at the database level.
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
