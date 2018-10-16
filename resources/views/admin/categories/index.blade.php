@@ -36,7 +36,7 @@
             @foreach ($categories as $categ)
                 <tr>
                     <td>{{$categ->id}}</td>
-                    <td>{{$categ->name}}</td>
+                <td><a href="{{route('categories.edit', $categ->id)}}">{{$categ->name}}</a></td>
                     <td>{{$categ->created_at ? $categ->created_at->diffForHumans() : 'No date'}}</td>
                 </tr>
             @endforeach
