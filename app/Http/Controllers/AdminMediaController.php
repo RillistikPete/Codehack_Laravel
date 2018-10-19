@@ -20,4 +20,31 @@ class AdminMediaController extends Controller
         return view('admin.media.create');
 
     }
+
+    public function store(Request $request){
+
+        // $_FILES['file'] - superglobal
+
+        $file = $request->file('file');
+
+        $name = time() . $file->getClientOriginalName();
+
+        $file->move('images', $name);
+
+        Photo::create(['file'=>$name]);
+
+    }
+
+    public function destroy($id) {
+
+        $photo = Photo::findOrFail($id);
+
+        unlink(public_path() . $photo->file );
+        
+        $photo->delete();
+
+        return redirect('/admin/media');
+
+    }
+
 }

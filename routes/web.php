@@ -38,6 +38,10 @@ Route::group(['middleware'=>'admin'], function() {
     Route::resource('/admin/posts', 'AdminPostsController');
     Route::resource('/admin/categories', 'AdminCategoriesController');
     Route::resource('/admin/media', 'AdminMediaController');
+    // How to create your own connection to controller:
     // Route::get('/admin/media/upload', ['as'=>'media.upload', 'uses'=>'AdminMediaController@store']);
+    Route::resource('/admin/comments', 'PostCommentsController');
+    Route::resource('/admin/comment/replies', 'PostCommentController');
+
 });    
 
