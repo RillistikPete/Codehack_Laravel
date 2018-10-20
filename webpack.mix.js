@@ -1,10 +1,14 @@
-// const mix = require('laravel-mix');
+
+
 const mix = require('laravel-mix');
 
-// ============================ ORIGINAL ===================================
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.autoload({
+    jquery: ['$', 'window.jQuery',"jQuery","window.$","jquery","window.jquery"]
+});
+
+mix.js('resources/assets/js/app.js', 'public/js/app.js')
+   .sass('resources/assets/sass/app.scss', 'public/css/app.css');
    
    mix.styles([
 
@@ -16,7 +20,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
         'resources/assets/css/libs/sb-admin-2.css',
         'resources/assets/css/libs/styles.css',
 
-   ], './public/css/libs.css');
+   ], 'public/css/libs.css');
    
    mix.scripts([
 
@@ -27,4 +31,4 @@ mix.js('resources/assets/js/app.js', 'public/js')
         'resources/assets/js/libs/sb-admin-2.js',
         'resources/assets/js/libs/scripts.js',
 
-   ], './public/js/libs.js' );
+   ], 'public/js/libs.js');
