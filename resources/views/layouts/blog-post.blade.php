@@ -12,9 +12,9 @@
     <title>Blog Post - Start Bootstrap Template</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="{{asset('public/css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('public/css/app.css')}}" rel="stylesheet" type="text/css">
 
-    <link href="{{asset('css/libs.css')}}" rel="stylesheet">
+    <link href="{{asset('css/libs.css')}}" rel="stylesheet" type="text/css">
 
 
     <!-- Bootstrap Core CSS -->
@@ -156,8 +156,13 @@
     </div>
     <!-- /.container -->
 
+    {{-- JQuery --}}
+
     <script src="{{asset('js/libs.js')}}"></script>
 
+    @yield('scripts')
+
+    
 </body>
 
 </html>

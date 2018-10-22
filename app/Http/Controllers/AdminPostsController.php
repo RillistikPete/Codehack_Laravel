@@ -126,6 +126,7 @@ class AdminPostsController extends Controller
         return redirect('/admin/posts');
     }
 
+    //this is for post.blade.php
     public function post($id){
 
         $post = Post::findOrFail($id);

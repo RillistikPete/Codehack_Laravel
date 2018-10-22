@@ -7,8 +7,8 @@ mix.autoload({
     jquery: ['$', 'window.jQuery',"jQuery","window.$","jquery","window.jquery"]
 });
 
-mix.js('resources/assets/js/app.js', 'public/js/app.js')
-   .sass('resources/assets/sass/app.scss', 'public/css/app.css');
+mix.js('resources/assets/js/app.js', 'public/js')
+    .sass('resources/assets/sass/app.scss', 'public/css');
    
    mix.styles([
 

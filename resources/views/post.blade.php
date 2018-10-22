@@ -70,6 +70,7 @@
                 <!-- Posted Comments -->
 
             @if(count($comments) > 0)
+            
 
                 <!-- Comment -->
                 @foreach ($comments as $comment)
@@ -84,21 +85,51 @@
                         </h4>
                        <p>{{$comment->body}}</p>
                         
-                            <!-- Nested Comment -->
-                            <div class="media">
-                                <a class="pull-left" href="#">
-                                    <img class="media-object" src="http://placehold.it/64x64" alt="">
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Nested Start Bootstrap
-                                        <small>August 25, 2014 at 9:30 PM</small>
-                                    </h4>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                </div>
-                            </div>
-                            <!-- End Nested Comment -->
 
+                       @if(count($comment->replies) > 0)
 
+                        @foreach ($comment->replies as $reply)
+                            
+                                <!-- Nested Comment -->
+                                <div id="nested-comment" class="media" style="margin-top:45px;">
+                                    <a class="pull-left" href="#">
+                                    <img class="media-object" height="64" src="{{$reply->photo}}" alt="">
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">{{$reply->author}}
+                                            <small>{{$reply->created_at->diffForHumans()}}</small>
+                                        </h4>
+                                        <p>{{$reply->body}}</p>
+                                    </div>
+
+                                        <div class="comment-reply-container">
+                            
+                                                <button class="pull-right btn btn-primary toggle-reply">Reply</button>
+
+                                                <div class="comment-reply">
+                                                    
+                                                    {!! Form::open(['method'=>'POST', 'action'=>'CommentRepliesController@createReply']) !!}
+
+                                                    <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                
+                                                        <div class='form-group'>
+                                                        {!! Form::label('body', 'Body:') !!}
+                                                        {!! Form::textarea('body', null, ['class'=>'form-control', 'rows'=>1]) !!}
+                                                        </div>
+                                                        <div class='form-group'>
+                                                        {!! Form::submit('Submit', null, ['class'=>'btn btn-primary']) !!}
+                                                        </div>
+                                                    {!! Form::close() !!}
+
+                                                </div>
+                                        </div>
+                                <!-- End Nested Comment -->
+
+                        </div>
+
+                        @endforeach
+
+                        @endif
 
 
                     </div>
@@ -111,5 +142,17 @@
 
             </div>
 
-
 @stop
+
+@section('scripts')
+    
+    <script>
+        $(".comment-reply-container . toggle-reply").click(function() {
+
+            console.log('clicked reply');
+            $(this).next().slideToggle("slow");
+
+        });
+    </script>
+
+@endsection

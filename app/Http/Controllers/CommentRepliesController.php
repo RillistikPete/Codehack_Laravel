@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\CommentReply;
+use Auth;
+
 
 class CommentRepliesController extends Controller
 {
@@ -35,6 +38,29 @@ class CommentRepliesController extends Controller
     public function store(Request $request)
     {
         //
+    }
+    public function createReply(Request $request){
+
+        $user = Auth::user();
+
+        //Create this data object so you can pass them in and 
+        // don't have to create fields for them in the form:
+        
+            $data = [
+
+            'comment_id' => $request->comment_id,
+            'author' => $user->name,
+            'email' => $user->email,
+            'photo' => $user->photo->file,
+            'body' => $request->body
+
+        ];
+
+        CommentReply::create($data);
+
+        $request->session()->flash('reply_message', 'Your reply has been submitted and is awaiting moderation');
+        
+        return redirect()->back();
     }
 
     /**
