@@ -148,8 +148,7 @@ class AdminUsersController extends Controller
         $user = User::findOrFail($id);
 
         // Delete file from images folder:
-        // Don't have to use "/images" bc we have an ACCESSOR in Photo.php model!
-        // unlink(public_path() . "/images" . $user->photo->file);
+        // unlink( 'path-to-public' . $user->photo->file);
         unlink(public_path() . $user->photo->file);
         $user->delete();
 

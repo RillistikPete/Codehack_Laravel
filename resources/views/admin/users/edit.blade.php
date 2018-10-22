@@ -9,7 +9,7 @@
   {{-- convert to model, pass in $user, this allows for access --}}
 
     <div class="col-sm-9">
-        <img class="img-rounded" height="200px" width="200px" src="{{$user->photo ? $user->photo->file : '/images/placeholder.jpg'}}" alt="">
+        <img class="img-rounded" height="200px" src="{{$user->photo ? $user->photo->file : '/images/placeholder.jpg'}}" alt="">
     </div>
 
     {!! Form::model($user, ['method'=>'PATCH', 'action'=>['AdminUsersController@update', $user->id], 'files'=>true]) !!}
