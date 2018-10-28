@@ -77,7 +77,7 @@
                     
                 <div class="media">
                     <a class="pull-left" href="#">
-                    <img height="64" class="media-object" src="{{$comment->photo}}" alt="">
+                    <img height="64" class="media-object" src="{{Auth::user()->gravatar}}" alt="">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">{{$comment->author}}
@@ -90,8 +90,10 @@
 
                         @foreach ($comment->replies as $reply)
                             
+                            @if ($reply->is_active == 1)
+
                                 <!-- Nested Comment -->
-                                <div id="nested-comment" class="media" style="margin-top:45px;">
+                                <div id="nested-comment" class="media">
                                     <a class="pull-left" href="#">
                                     <img class="media-object" height="64" src="{{$reply->photo}}" alt="">
                                     </a>
@@ -106,7 +108,7 @@
                             
                                                 <button class="pull-right btn btn-primary toggle-reply">Reply</button>
 
-                                                <div class="comment-reply">
+                                                <div class="comment-reply col-sm-6" style="display:none;">
                                                     
                                                     {!! Form::open(['method'=>'POST', 'action'=>'CommentRepliesController@createReply']) !!}
 
@@ -123,9 +125,13 @@
 
                                                 </div>
                                         </div>
+                                </div>
                                 <!-- End Nested Comment -->
 
-                        </div>
+                            @else 
+                                <h1>No Replies</h1>   
+
+                            @endif
 
                         @endforeach
 
@@ -147,7 +153,7 @@
 @section('scripts')
     
     <script>
-        $(".comment-reply-container . toggle-reply").click(function() {
+        $(".comment-reply-container .toggle-reply").click(function() {
 
             console.log('clicked reply');
             $(this).next().slideToggle("slow");

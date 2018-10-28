@@ -12,7 +12,9 @@
     <title>Admin</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="{{asset('public/css/app.css')}}" rel="stylesheet" type="text/css">
+    
+    {{-- FOR SOME REASON, WHEN I EXCLUDE THE FOLLOWING STYLES, IT WORKS AS IT SHOULD. MUST LOAD APP.CSS SOMEHOW --}}
+    {{-- <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css"> --}}
 
     <link href="{{asset('css/libs.css')}}" rel="stylesheet" type="text/css">
     
@@ -20,8 +22,8 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     {{-- [if lt IE 9]> --}}
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    {{-- <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> --}}
     {{-- <![endif]--> --}}
 
     @yield('styles')
@@ -54,7 +56,7 @@
 
             <!-- /.dropdown -->
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <a class="dropdown-toggle" data-toggle="dropdown" onClick="console.log('its workedcl');" href="#">
                     <i class="fa fa-user fa-fw"></i> {{Auth::user()->name}}  <i class="fa fa-caret-down"></i>
                 </a>
 
@@ -352,12 +354,10 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="{{asset('js/libs.js')}}"></script>
+{{-- <script src="{{asset('js/libs.js')}}"></script> --}}
 
-
-@yield('scripts')
-
-
+{{-- 
+@yield('scripts') --}}
 
 
 

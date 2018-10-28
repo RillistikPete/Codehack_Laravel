@@ -12,13 +12,15 @@
     <title>Blog Post - Start Bootstrap Template</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="{{asset('public/css/app.css')}}" rel="stylesheet" type="text/css">
+    {{-- <link href="assets/css/libs/bootstrap.min.css" rel="stylesheet"> --}}
+
+    <!-- My Mix CSS -->
+{{-- FOR SOME REASON, WHEN I EXCLUDE THE FOLLOWING STYLES, IT WORKS AS IT SHOULD. MUST LOAD APP.CSS SOMEHOW --}}
+    {{-- <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css"> --}}
 
     <link href="{{asset('css/libs.css')}}" rel="stylesheet" type="text/css">
 
 
-    <!-- Bootstrap Core CSS -->
-    {{-- <link href="css/bootstrap.min.css" rel="stylesheet"> --}}
 
     <!-- Custom CSS -->
     {{-- <link href="css/blog-post.css" rel="stylesheet"> --}}

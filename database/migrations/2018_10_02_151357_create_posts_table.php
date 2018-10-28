@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->integer('photo_id')->unsigned()->index()->nullable();
             $table->string('title');
             $table->text('body');
+            $table->string('slug')->nullable();
             $table->timestamps();
             // Foreign key constraints are used to force referential
             // integrity at the database level.
