@@ -18,6 +18,10 @@
     {!! Form::open(['method'=>'POST', 'action'=>'AdminMediaController@store', 'class'=>'dropzone', 'style'=>'border:1px solid black;']) !!}
         <br>
         <br>
+        <br>
+        <br>
+        <br>
+        <br>
     {!! Form::close() !!}
 
 

@@ -4,6 +4,7 @@
 
 @section('content')
     
+    @include('includes.tinyeditor')
 
 <h1>Edit Post</h1>
 
@@ -11,7 +12,7 @@
 
         <div class="col-sm-6">
 
-            <img src="{{$post->photo->file}}" alt="" class="img-responsive">
+            <img src="{{$post->photo ? $post->photo->file : $post->photoPlaceholder()}}" alt="" class="img-responsive">
 
         </div>
         
@@ -30,12 +31,12 @@
 
             <div class='form-group'>
             {!! Form::label('photo_id', 'Photo:') !!}
-            {!! Form::file('photo_id', null, ['class'=>'form control']) !!}
+            {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
             </div>
 
             <div class='form-group'>
             {!! Form::label('body', 'Description:') !!}
-            {!! Form::textarea('body', null, ['class'=>'form control']) !!}
+            {!! Form::textarea('body', null, ['class'=>'form-control']) !!}
             </div>
 
 
@@ -45,7 +46,7 @@
             <div class='form-group'>
             {!! Form::open(['method'=>'DELETE', 'action'=>['AdminPostsController@destroy', $post->id]]) !!}
             <div class='form-group'>
-            {!! Form::submit('Delete', null, ['class'=>'btn btn-primary']) !!}
+            {!! Form::submit('Delete', null, ['class'=>'btn btn-danger']) !!}
             </div>
             {!! Form::close() !!}
             </div>

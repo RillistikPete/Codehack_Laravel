@@ -354,10 +354,10 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-{{-- <script src="{{asset('js/libs.js')}}"></script> --}}
+<script src="{{asset('js/libs.js')}}"></script>
 
-{{-- 
-@yield('scripts') --}}
+
+@yield('scripts')
 
 
 

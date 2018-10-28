@@ -11,6 +11,8 @@
 |
 */
 use App\User;
+use \Unisharp\LaravelFilemanager;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,9 +47,15 @@ Route::group(['middleware'=>'admin'], function() {
     Route::resource('/admin/comment/replies', 'CommentRepliesController');
 
 });    
+// For delete method checkboxes on media index
+Route::delete('/delete/media', 'AdminMediaController@deleteMedia');
 
 Route::group(['middleware'=>'auth'], function(){
 
     Route::post('comment/reply', 'CommentRepliesController@createReply');
 });
 
+//Laravel file-manager alpha-version only - route group to wrap package routes:
+// Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+//     \UniSharp\LaravelFilemanager\Lfm::routes();
+// });

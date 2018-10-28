@@ -20,4 +20,7 @@ class Photo extends Model
     // public function showPlaceholdPhoto($photo) {
     //     return $this->placehold;
     // }
+    public function lfmPhotosFolder() {
+        return public_path() . '/images/2/picsThatAreCool';
+    }
 }
