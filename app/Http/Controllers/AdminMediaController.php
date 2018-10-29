@@ -57,6 +57,16 @@ class AdminMediaController extends Controller
             $photo->delete();
         }
 
+            //did this myself
+            if(count($request->checkboxArray) > 1){
+
+                flash('Media photos deleted');
+            }
+            else{
+                flash('Media photo deleted');
+                
+            }
+
         return redirect()->back();
 
 

@@ -5,6 +5,9 @@
 
     <h1>Media</h1>
 
+    {{-- to include flash message upon delete on request form --}}
+    @include('flash::message')
+
     @if($photos)
 
     <form action="/delete/media" method="post" class="form-inline">
@@ -40,13 +43,6 @@
                         <td>{{$photo->id}}</td>
                         <td><img height="50" src="{{$photo->file}}" alt=""/></td>
                         <td>{{$photo->created_at ? $photo->created_at : 'no date'}}</td>
-                        <td>
-                            {!! Form::open(['method'=>'DELETE', 'action'=>['AdminMediaController@destroy', $photo->id]]) !!}
-                            <div class='form-group'>
-                              {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
-                            </div>
-                            {!! Form::close() !!}
-                        </td>
                     </tr>
             @endforeach
         </tbody>
@@ -55,6 +51,31 @@
     </form> {{-- delete/media --}}
 
 
-    @endif  
+    @endif 
+
+@section('scripts')
+    
+    <script>
+
+        $(document).ready(function()
+        {
+            $('#options').click(function(){
+                if(this.checked){
+                    $('.checkboxes').each(function(){
+                        this.checked = true;
+                    });
+                }
+                else {
+                    $('.checkboxes').each(function(){
+                        this.checked = false;
+                    });
+                }
+                console.log('hello');
+            });
+        });
+    </script>
+
+@endsection
+
 
 @stop
