@@ -36,8 +36,9 @@
                     <td>{{$post->title}}</td>
                     <td>{{$post->body}}</td>
 
-                    <td><a href="{{route('home.post', $post->id)}}">View Post</td>
-                    <td><a href="{{route('comments.show', $post->id)}}">View Comments</td>
+                    {{-- send slug here instead of post->id bc you want slug title in the url not number --}}
+                    <td><a href="{{route('home.post', $post->slug)}}">View Post</td>
+                    <td><a href="{{route('comments.index', $post->id)}}">View Comments</td>
 
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td>{{$post->updated_at->diffForHumans()}}</td>
@@ -48,10 +49,15 @@
 
         </tbody>
 
-
-
-
-
     </table>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-5">
+
+                {{$posts->render()}}
+                
+        </div>
+    </div>
+
 
 @endsection

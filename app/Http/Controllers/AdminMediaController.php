@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Photo;
 
 class AdminMediaController extends Controller
@@ -46,5 +47,31 @@ class AdminMediaController extends Controller
         return redirect('/admin/media');
 
     }
+
+    public function deleteMedia(Request $request) {
+
+        $photos = Photo::findOrFail($request->checkboxArray);
+
+        foreach($photos as $photo)
+        {
+            $photo->delete();
+        }
+
+            //did this myself
+            if(count($request->checkboxArray) > 1){
+
+                flash('Media photos deleted');
+            }
+            else{
+                flash('Media photo deleted');
+                
+            }
+
+        return redirect()->back();
+
+
+    }
+
+
 
 }

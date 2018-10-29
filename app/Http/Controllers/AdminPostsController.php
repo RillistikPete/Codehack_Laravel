@@ -8,6 +8,11 @@ use App\Category;
 use App\Photo;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostsCreateRequest;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Cviebrock\EloquentSluggable\Sluggable;
+// for AdminPostsController@post to be able to find by slug
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
+
 
 class AdminPostsController extends Controller
 {
@@ -17,8 +22,9 @@ class AdminPostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $posts = Post::all();
+    {   
+        //instead of Post::all(), you can show only 2 or however many you want per page:
+        $posts = Post::paginate(5);
         return view('admin.posts.index', compact('posts'));
     }
     
@@ -127,9 +133,9 @@ class AdminPostsController extends Controller
     }
 
     //this is for post.blade.php
-    public function post($id){
+    public function post($slug){
 
-        $post = Post::findOrFail($id);
+        $post = Post::findBySlug($slug);
 
         $comments = $post->comments()->whereIsActive(1)->get();
         

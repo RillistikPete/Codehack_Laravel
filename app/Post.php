@@ -3,9 +3,33 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
+// for AdminPostsController@post to be able to find by slug
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
+
 
 class Post extends Model
 {
+    use Sluggable;
+    use SluggableScopeHelpers;
+
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title',
+                'onUpdate' => true,
+            ]
+        ];
+    }
+
+
     protected $fillable = [
         'category_id',
         'photo_id',
@@ -36,6 +60,11 @@ class Post extends Model
     public function comments() {
 
         return $this->hasMany('App\Comment');
+    }
+
+    public function photoPlaceholder() {
+
+        return "/images/placeholder.jpg";
     }
 
 }
