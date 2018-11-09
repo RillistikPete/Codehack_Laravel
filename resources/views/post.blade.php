@@ -18,7 +18,7 @@
                 <hr>
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span>Post Created on {{$post->created_at->diffForHumans()}}</p>
+                <p><span class="glyphicon glyphicon-time"></span>Post created {{$post->created_at->diffForHumans()}}</p>
 
                 <hr>
 
