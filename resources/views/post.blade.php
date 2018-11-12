@@ -36,7 +36,7 @@
 
 {{-- COMMENTS SECTION DONE MANUALLY, NO DISQUS --}}
 
-            {{-- @if(Session::has('comment_message'))
+            @if(Session::has('comment_message'))
 
                 {{Session('comment_message')}}
 
@@ -150,17 +150,15 @@
         @endif
 
 
-        </div> --}}
-
-
-
 
 
 
                 <hr><hr>
                  {{-- DISQUS  --}}
 
-                 <div id="disqus_thread"></div>
+                {{--
+                
+                    <div id="disqus_thread"></div>
                  <script>
                  
                  /**
@@ -182,6 +180,8 @@
                  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
                  <script id="dsq-count-scr" src="//codehacking-vqxykezwu5.disqus.com/count.js" async></script>
+
+                 --}}
 
 @stop
 

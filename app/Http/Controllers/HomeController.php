@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Comment;
 use Auth;
 
 
@@ -29,6 +30,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $posts = Post::paginate(2);
-        return view('front/home', compact('posts', 'user'));
+        $comments = Comment::all();
+        return view('front/home', compact('posts', 'user', 'comments'));
     }
 }
