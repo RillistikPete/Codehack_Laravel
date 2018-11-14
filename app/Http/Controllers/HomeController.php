@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
+use App\Category;
+use Carbon\Carbon;
 use Auth;
 
 
@@ -18,7 +20,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -28,9 +30,22 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         $user = Auth::user();
-        $posts = Post::paginate(2);
+        $posts = Post::paginate(1);
         $comments = Comment::all();
-        return view('front/home', compact('posts', 'user', 'comments'));
+        $categories = Category::all();
+        return view('front/home', compact('posts', 'user', 'comments', 'categories', 'year'));
     }
+
+        //this is for post.blade.php
+        public function post($slug){
+
+            $post = Post::findBySlug($slug);
+            $categories = Category::all();
+            $comments = $post->comments()->whereIsActive(1)->get();
+            
+            return view('post', compact('post', 'comments', 'categories'));
+    
+        }
 }

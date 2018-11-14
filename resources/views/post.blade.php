@@ -1,9 +1,12 @@
 
-@extends('layouts.blog-post')
+@extends('layouts.blog-home')
 
 
 @section('content')
 
+<div class="row">
+
+    <div class="col-md-8">
 
                 <!-- Blog Post -->
 
@@ -36,11 +39,6 @@
 
 {{-- COMMENTS SECTION DONE MANUALLY, NO DISQUS --}}
 
-            @if(Session::has('comment_message'))
-
-                {{Session('comment_message')}}
-
-            @endif
 
             <!-- Blog Comments -->
 
@@ -149,14 +147,18 @@
 
         @endif
 
+        </div>  <!-- col-md-8 -->
+
+            @include('includes.front-sidebar')
+
+        </div> <!-- ROW -->
 
 
 
-
-                <hr><hr>
-                 {{-- DISQUS  --}}
-
-                {{--
+        {{-- DISQUS  --}}
+        
+        {{--
+            <hr><hr>
                 
                     <div id="disqus_thread"></div>
                  <script>

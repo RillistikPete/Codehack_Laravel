@@ -27,7 +27,7 @@ Route::get('/logout', function() {
     return redirect('/');
 });
 
-Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
+Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'HomeController@post']);
 
 // ** Route group for middlewares
 Route::group(['middleware'=>'admin'], function() {

@@ -2,6 +2,7 @@
 
 @section('content')
 
+<div class="container">
 <div class="row">
 
     <!-- Blog Entries Column -->
@@ -18,7 +19,7 @@
                     <a href="#">{{$post->title}}</a>
                 </h2>
                 <p class="lead">
-                    by <a href="index.php">{{$post->user->name}}</a>
+                    by {{$post->user->name}}
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Created {{$post->created_at->diffForHumans()}}</p>
                 <hr>
@@ -79,7 +80,9 @@
                         
                     <div class="media">
                         <a class="pull-left" href="#">
+                            
                         <img height="64" class="media-object" src="{{Auth::user()->gravatar}}" alt="">
+
                         </a>
                         <div class="media-body">
                             <h4 class="media-heading">{{$comment->author}}
@@ -148,19 +151,26 @@
                 @endif
 
             @endforeach
-
         @endif
-
-
-
     </div>
 
-        <!-- Pagination -->
+        <!-- Blog Sidebar Widgets Column -->
+        @include('includes.front-sidebar')
 
-</div>
+</div> <!-- row -->
+</div> <!-- container -->
 
-</div>
-<!-- Blog Sidebar Widgets Column -->
-@include('includes.front-sidebar')
+
+                <!-- Pagination -->
+                {{-- <div class="row">
+                    <div class="col-sm-6 col-sm-offset-5">
+                        {{$posts->render()}}
+                    </div>
+                </div>  --}}
+    
 
 @endsection
+        
+        
+
+

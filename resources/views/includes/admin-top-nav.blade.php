@@ -15,24 +15,17 @@
 
 
     <!-- /.dropdown -->
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" onClick="console.log('its workedcl');" href="#">
-            <i class="fa fa-user fa-fw"></i> {{Auth::user()->name}}  <i class="fa fa-caret-down"></i>
-        </a>
 
+    <li class="dropdown">
         
-        <ul class="dropdown-menu dropdown-user">
-            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+            <i class="fa fa-user fa-fw"></i> {{Auth::user()->name}} </i>
+
+            <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
             </li>
-            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-            </li>
-            <li class="divider"></li>
-            <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-            </li>
-        </ul>
+    </li>
         <!-- /.dropdown-user -->
     </li>
     <!-- /.dropdown -->
-
+</ul>
 
 </ul>
