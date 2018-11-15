@@ -8,7 +8,7 @@
 
     <div class="col-md-8">
 
-            @if ($posts)
+        @if ($posts)
                     
             @foreach ($posts as $post)
     
@@ -42,7 +42,7 @@
 {{-- COMMENTS SECTION DONE MANUALLY, NO DISQUS --}}
 
 
-            <!-- Blog Comments -->
+        <!-- Blog Comments -->
 
         @if(Auth::check())
 
@@ -73,11 +73,11 @@
 
             <!-- Posted Comments -->
 
-        @if(count($postComments) > 0)
+        @if(count($comments) > 0)
         
 
             <!-- Comment -->
-            @foreach ($comments as $comment)
+            @foreach ($post->comments as $comment)
                 
             <div class="media">
                 <a class="pull-left" href="#">

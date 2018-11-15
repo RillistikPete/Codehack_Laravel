@@ -22,8 +22,8 @@
                     <li>
                         <a href="{{url('/register')}}">Register</a>
                     </li>
-                    
-                    @else
+
+                @elseif($user->isAdmin())
                     
                     <li>
                         <a href="{{url('/admin')}}">Admin</a>
@@ -33,6 +33,15 @@
                         <a href="{{url('/logout')}}">Logout</a>
                     </li>
 
+                @else
+
+                    <li>
+                        <h2 style="color:white;padding-right:20px;"> {{Auth::user()->name}} </h2>
+                    </li>
+
+                    <li>
+                        <h2><a href="{{url('/logout')}}">Logout</a></h2>
+                    </li>
 
                 @endif
 

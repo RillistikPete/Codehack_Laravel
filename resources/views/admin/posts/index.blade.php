@@ -6,7 +6,7 @@
     
 
     <h1>Posts</h1>
-
+    <hr>
 
     <table class="table table-hover">
             <thead>
@@ -36,7 +36,7 @@
 
                     {{-- send slug here instead of post->id bc you want slug title in the url not number --}}
                     <td><a href="{{route('home.post', $post->slug)}}">View Post</td>
-                    <td><a href="{{route('comments.index', $post->id)}}">View Comments</td>
+                    <td><a href="{{route('comments.show', $post->id)}}">View Comments</td>
 
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td>{{$post->updated_at->diffForHumans()}}</td>

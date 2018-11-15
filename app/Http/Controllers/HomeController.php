@@ -33,7 +33,7 @@ class HomeController extends Controller
 
         $user = Auth::user();
         $posts = Post::paginate(1);
-        $postComments = Post::with('comments')->get();
+        $postComments = Post::with('comments')->orderBy('created_at', 'desc')->get();
         $comments = Comment::all();
         $categories = Category::all();
         return view('front/home', compact('posts', 'user', 'comments', 'categories', 'year', 'postComments'));
@@ -42,11 +42,12 @@ class HomeController extends Controller
         //this is for post.blade.php
         public function post($slug){
 
+            $user = Auth::user();
             $post = Post::findBySlug($slug);
             $categories = Category::all();
             $comments = $post->comments()->whereIsActive(1)->get();
             
-            return view('post', compact('post', 'comments', 'categories'));
+            return view('post', compact('post', 'comments', 'categories', 'user'));
     
         }
 }

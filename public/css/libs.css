@@ -10,6 +10,9 @@ body {
 
 footer {
     margin: 50px 0;
+    height: 100;
+    position: absolute;
+    overflow: hidden;
 }
 /*!
  * Bootstrap v3.3.4 (http://getbootstrap.com)
