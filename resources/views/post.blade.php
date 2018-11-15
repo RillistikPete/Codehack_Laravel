@@ -69,8 +69,7 @@
             <hr>
 
 
-            <!-- Posted Comments -->
-
+        <!-- Posted Comments -->
         @if(count($comments) > 0)
         
 
