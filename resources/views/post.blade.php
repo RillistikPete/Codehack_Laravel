@@ -15,7 +15,7 @@
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#">{{$post->user->name}}</a>
+                    by {{$post->user->name}}
                 </p>
 
                 <hr>
@@ -79,7 +79,7 @@
                 
             <div class="media">
                 <a class="pull-left" href="#">
-                <img height="64" class="media-object" src="{{Auth::user()->gravatar}}" alt="">
+                <img height="64" class="media-object" src="{{Auth::user() ? Auth::user()->gravatar : "/images/icon-user-default.png"}}" alt="">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">{{$comment->author}}

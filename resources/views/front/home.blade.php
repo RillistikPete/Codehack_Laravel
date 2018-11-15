@@ -13,14 +13,14 @@
             @foreach ($posts as $post)
     
             <h2>
-                <a href="#">{{$post->title}}</a>
+                <a href="/post/{{$post->slug}}">{{$post->title}}</a>
             </h2>
                 <p class="lead">
                     by {{$post->user->name}}
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Created {{$post->created_at->diffForHumans()}}</p>
                 <hr>
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                <img class=" img-responsive" src="{{$post->photo ? $post->photo->file : "http://placehold.it/900x300"}}" alt="">
                 <hr>
     
                         <p>
@@ -31,8 +31,10 @@
                 <a class="btn btn-primary" href="/post/{{$post->slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
     
                 <hr>
-    
+                    
+                
             @endforeach
+
         @endif
 
 
@@ -71,7 +73,7 @@
 
             <!-- Posted Comments -->
 
-        @if(count($comments) > 0)
+        @if(count($postComments) > 0)
         
 
             <!-- Comment -->
@@ -79,7 +81,7 @@
                 
             <div class="media">
                 <a class="pull-left" href="#">
-                <img height="64" class="media-object" src="{{Auth::user()->gravatar}}" alt="">
+                <img height="60" width="60" class="media-object" src="{{Auth::user() ? Auth::user()->gravatar : "/images/icon-user-default.png"}}" alt="">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">{{$comment->author}}
@@ -88,7 +90,7 @@
                    <p>{{$comment->body}}</p>
                     
 
-                   @if(count($comment->replies) > 0)
+                @if(count($comment->replies) > 0)
 
                     @foreach ($comment->replies as $reply)
                         
@@ -137,7 +139,7 @@
 
                     @endforeach
 
-                    @endif
+                @endif
 
 
                 </div>

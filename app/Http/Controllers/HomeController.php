@@ -33,9 +33,10 @@ class HomeController extends Controller
 
         $user = Auth::user();
         $posts = Post::paginate(1);
+        $postComments = Post::with('comments')->get();
         $comments = Comment::all();
         $categories = Category::all();
-        return view('front/home', compact('posts', 'user', 'comments', 'categories', 'year'));
+        return view('front/home', compact('posts', 'user', 'comments', 'categories', 'year', 'postComments'));
     }
 
         //this is for post.blade.php
