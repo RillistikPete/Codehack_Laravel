@@ -35,11 +35,14 @@
 
                 <hr><hr>
 
+                @if(Session::has('comment_message'))
+                    {{session('comment_message')}}
+                @endif
 
 
 {{-- COMMENTS SECTION DONE MANUALLY, NO DISQUS --}}
 
-
+            
             <!-- Blog Comments -->
 
         @if(Auth::check())
@@ -74,7 +77,7 @@
         
 
             <!-- Comment -->
-            @foreach ($comments as $comment)
+            @foreach ($post->comments as $comment)
                 
             <div class="media">
                 <a class="pull-left" href="#">

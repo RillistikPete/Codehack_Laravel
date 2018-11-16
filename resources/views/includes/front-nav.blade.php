@@ -36,11 +36,11 @@
                 @else
 
                     <li>
-                        <h2 style="color:white;padding-right:20px;"> {{Auth::user()->name}} </h2>
+                        <h3 style="color:white;padding-right:20px;"> {{Auth::user()->name}} </h3>
                     </li>
 
                     <li>
-                        <h2><a href="{{url('/logout')}}">Logout</a></h2>
+                        <h3><a href="{{url('/logout')}}">Logout</a></h3>
                     </li>
 
                 @endif

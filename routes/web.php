@@ -51,6 +51,7 @@ Route::delete('/delete/media', 'AdminMediaController@deleteMedia');
 Route::group(['middleware'=>'auth'], function(){
 
     Route::post('comment/reply', 'CommentRepliesController@createReply');
+    Route::post('comment', 'PostCommentsController@store');
 });
 
 //Laravel file-manager alpha-version only - route group to wrap package routes:

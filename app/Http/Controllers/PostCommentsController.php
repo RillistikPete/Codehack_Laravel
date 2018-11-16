@@ -57,12 +57,11 @@ class PostCommentsController extends Controller
         ];
 
         Comment::create($data);
+        //return dd($data);
 
         $request->session()->flash('comment_message', 'Your message has been submitted and is awaiting moderation');
         
         return redirect()->back();
-
-;
 
     }
 
