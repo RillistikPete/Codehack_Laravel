@@ -24,23 +24,26 @@
                     </li>
 
                 @elseif($user->isAdmin())
-                    
+
                     <li>
-                        <a href="{{url('/admin')}}">Admin</a>
+                        <h4 style="color:white;padding-right:20px;"> {{Auth::user()->name}} </h4>
+                    </li>
+                    <li>
+                        <h4 style="padding-right:20px;"><a href="{{url('/admin')}}">Admin</a></h4>
                     </li>
 
                     <li>
-                        <a href="{{url('/logout')}}">Logout</a>
+                        <h4><a href="{{url('/logout')}}">Logout</a></h4>
                     </li>
 
                 @else
 
                     <li>
-                        <h3 style="color:white;padding-right:20px;"> {{Auth::user()->name}} </h3>
+                        <h4 style="color:white;padding-right:20px;"> {{Auth::user()->name}} </h4>
                     </li>
 
                     <li>
-                        <h3><a href="{{url('/logout')}}">Logout</a></h3>
+                        <h4><a href="{{url('/logout')}}">Logout</a></h4>
                     </li>
 
                 @endif
