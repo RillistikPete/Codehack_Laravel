@@ -77,7 +77,7 @@
         
 
             <!-- Comment -->
-            @foreach ($post->comments as $comment)
+            @foreach ($comments as $comment)
                 
             <div class="media">
                 <a class="pull-left" href="#">

@@ -4,6 +4,10 @@
 
 @section('content')
 
+{{-- <div class="row">
+    <div class="text-center" style="font-size:1.5em;height:100;margin-bottom:40px;">Welcome to my blog! Feel free to post anything you would like to share!</div>
+</div> --}}
+
 <div class="row">
 
     <div class="col-md-8">
@@ -73,11 +77,12 @@
 
             <!-- Posted Comments -->
 
-        @if(count($comments) > 0)
+        @if(count($postComments) > 0)
         
 
             <!-- Comment -->
             @foreach ($post->comments as $comment)
+            @if ($comment->is_active == 1)
                 
             <div class="media">
                 <a class="pull-left" href="#">
@@ -88,7 +93,7 @@
                         <small>{{$comment->created_at->diffForHumans()}}</small>
                     </h4>
                    <p>{{$comment->body}}</p>
-                    
+                
 
                 @if(count($comment->replies) > 0)
 
@@ -144,7 +149,8 @@
 
                 </div>
             </div>
-            
+            @endif  {{-- if comment is_active   --}}
+
             @endforeach
 
         @endif

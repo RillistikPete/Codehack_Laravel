@@ -36,7 +36,7 @@ class HomeController extends Controller
         $postComments = Post::with('comments')->orderBy('created_at', 'desc')->get();
         $comments = Comment::all();
         $categories = Category::all();
-        return view('front/home', compact('posts', 'user', 'comments', 'categories', 'year', 'postComments'));
+        return view('front/home', compact('posts', 'post', 'user', 'comments', 'categories', 'year', 'postComments'));
     }
 
         //this is for post.blade.php
