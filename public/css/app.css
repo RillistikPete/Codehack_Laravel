@@ -10489,3 +10489,8 @@ a.text-dark:focus {
   display: none;
 }
 
+body {
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#f3e7e9), color-stop(99%, #e3eeff), to(#e3eeff)) !important;
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%) !important;
+}
+
