@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Home - Start Bootstrap Template</title>
+    <title>Welcome to Gavinfpk.com's Laravel Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="{{asset('css/libs.css')}}">
