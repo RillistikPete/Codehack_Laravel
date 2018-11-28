@@ -5,16 +5,16 @@
     
 
     <h1>Categories</h1>
-
+    <hr>
     <div class="col-sm-6">
 
         {!! Form::open(['method'=>'POST', 'action'=>'AdminCategoriesController@store']) !!}
         <div class='form-group'>
         {!! Form::label('name', 'Name:') !!}
-        {!! Form::text('name', null, ['class'=>'form control']) !!}
+        {!! Form::text('name', null, ['class'=>'form-control']) !!}
         </div>
         <div class="form-group">
-        {!! Form::submit('Create Category', null, ['class'=>'btn btn-primary']) !!}
+        {!! Form::submit('Create Category', ['class'=>'btn btn-primary']) !!}
         </div>
         {!! Form::close() !!}
     </div>

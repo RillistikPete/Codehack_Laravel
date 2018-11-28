@@ -14,9 +14,8 @@ use App\User;
 use \Unisharp\LaravelFilemanager;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+
 
 Auth::routes();
 
@@ -28,14 +27,16 @@ Route::get('/logout', function() {
     return redirect('/');
 });
 
-Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
+Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'HomeController@post']);
+
+//get create post page for non-admin users: (taken out for now)
+//Route::get('post', 'HomeController@userCreatePost')->name('user-create-post');
 
 // ** Route group for middlewares
 Route::group(['middleware'=>'admin'], function() {
 
-    Route::get('/admin', function() {
-        return view('admin.index');
-    });
+    Route::get('/admin', 'AdminController@index');
+
     //** Resource will create routes for you:
     Route::resource('/admin/users', 'AdminUsersController');
     Route::resource('/admin/posts', 'AdminPostsController');
@@ -52,8 +53,12 @@ Route::delete('/delete/media', 'AdminMediaController@deleteMedia');
 
 Route::group(['middleware'=>'auth'], function(){
 
+    //Route::post('post', 'HomeController@store');
     Route::post('comment/reply', 'CommentRepliesController@createReply');
+    Route::post('comment', 'PostCommentsController@store');
 });
+
+//Route::post('post', 'HomeController@store');
 
 //Laravel file-manager alpha-version only - route group to wrap package routes:
 // Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {

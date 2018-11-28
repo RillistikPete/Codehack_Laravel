@@ -12,6 +12,7 @@
 @endif
 
 <h1>Users</h1>
+<hr>
     <table class="table table-hover">
             <thead>
             <tr>

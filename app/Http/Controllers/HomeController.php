@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\Post;
+use App\Comment;
+use App\Category;
+use Carbon\Carbon;
+use Auth;
+
 
 class HomeController extends Controller
 {
@@ -13,7 +20,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -23,6 +30,34 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $user = Auth::user();
+        $posts = Post::paginate(1);
+        $postComments = Post::with('comments')->orderBy('created_at', 'desc')->get();
+        $comments = Comment::all();
+        $categories = Category::all();
+        return view('front/home', compact('posts', 'post', 'user', 'comments', 'categories', 'year', 'postComments'));
     }
+
+    //this is for post.blade.php
+    public function post($slug){
+
+        $user = Auth::user();
+        $post = Post::findBySlug($slug);
+        $categories = Category::all();
+        $comments = $post->comments()->whereIsActive(1)->get();
+        
+        return view('post', compact('post', 'comments', 'categories', 'user'));
+
+    }
+
+    // public function userCreatePost() {
+
+    //     $user = Auth::user();
+    //     $categories = Category::pluck('name', 'id')->all();
+    //     return view('front.user-create-post', compact('categories', 'user'));
+        
+    // }
+
+    
 }

@@ -14,7 +14,7 @@
 }
 
 #admin-page {
-  padding-top: 0px;
+  padding-top: 30px;
 }
 
 #nested-comment {
@@ -23,4 +23,8 @@
 
 .comment-reply {
   display: none;
+}
+
+body {
+  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%) !important;
 }

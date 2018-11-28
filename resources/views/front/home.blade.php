@@ -4,46 +4,49 @@
 
 @section('content')
 
+{{-- <div class="row">
+    <div class="text-center" style="font-size:1.5em;height:100;margin-bottom:40px;">Welcome to my blog! Feel free to post anything you would like to share!</div>
+</div> --}}
+
 <div class="row">
 
     <div class="col-md-8">
 
-                <!-- Blog Post -->
-
-                <!-- Title -->
-                <h1>{{$post->title}}</h1>
-
-                <!-- Author -->
+        @if ($posts)
+                    
+            @foreach ($posts as $post)
+    
+            <h2>
+                <a href="/post/{{$post->slug}}">{{$post->title}}</a>
+            </h2>
                 <p class="lead">
                     by {{$post->user->name}}
                 </p>
-
+                <p><span class="glyphicon glyphicon-time"></span> Created {{$post->created_at->diffForHumans()}}</p>
                 <hr>
-
-                <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span>Post created {{$post->created_at->diffForHumans()}}</p>
-
+                <img class=" img-responsive" src="{{$post->photo ? $post->photo->file : "http://placehold.it/900x300"}}" alt="">
                 <hr>
-
-                <!-- Preview Image -->
-                <img class="img-responsive" src="{{$post->photo ? $post->photo->file : $post->photoPlaceholder()}}" alt="">
-
+    
+                        <p>
+                                {!! $post->body !!}
+                            {{-- {!!str_limit($post->body , 200)!!} --}}
+                        </p>
+    
+                <a class="btn btn-primary" href="/post/{{$post->slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+    
                 <hr>
+                    
+                
+            @endforeach
 
-                <!-- Post Content -->
-                <p>{!! $post->body !!}</p>
+        @endif
 
-                <hr><hr>
-
-                @if(Session::has('comment_message'))
-                    {{session('comment_message')}}
-                @endif
 
 
 {{-- COMMENTS SECTION DONE MANUALLY, NO DISQUS --}}
 
-            
-            <!-- Blog Comments -->
+
+        <!-- Blog Comments -->
 
         @if(Auth::check())
 
@@ -72,25 +75,27 @@
             <hr>
 
 
-        <!-- Posted Comments -->
-        @if(count($comments) > 0)
+            <!-- Posted Comments -->
+
+        @if(count($postComments) > 0)
         
 
             <!-- Comment -->
-            @foreach ($comments as $comment)
+            @foreach ($post->comments as $comment)
+            @if ($comment->is_active == 1)
                 
             <div class="media">
                 <a class="pull-left" href="#">
-                <img height="64" class="media-object" src="{{Auth::user() ? Auth::user()->gravatar : "/images/icon-user-default.png"}}" alt="">
+                <img height="60" width="60" class="media-object" src="{{Auth::user() ? Auth::user()->gravatar : "/images/icon-user-default.png"}}" alt="">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">{{$comment->author}}
                         <small>{{$comment->created_at->diffForHumans()}}</small>
                     </h4>
                    <p>{{$comment->body}}</p>
-                    
+                
 
-                   @if(count($comment->replies) > 0)
+                @if(count($comment->replies) > 0)
 
                     @foreach ($comment->replies as $reply)
                         
@@ -139,12 +144,13 @@
 
                     @endforeach
 
-                    @endif
+                @endif
 
 
                 </div>
             </div>
-            
+            @endif  {{-- if comment is_active   --}}
+
             @endforeach
 
         @endif
@@ -187,6 +193,10 @@
 
                  --}}
 
+                 <!-- Pagination -->
+                 <div class="row text-center">
+                     {{$posts->render()}}
+                 </div>
 
 @stop
 

@@ -51,18 +51,17 @@ class PostCommentsController extends Controller
             'post_id' => $request->post_id,
             'author' => $user->name,
             'email' => $user->email,
-            'photo' => $user->photo->file,
+            'photo' => $user->photo ? $user->photo->file : '',
             'body' => $request->body
 
         ];
 
         Comment::create($data);
+        //return dd($data);
 
         $request->session()->flash('comment_message', 'Your message has been submitted and is awaiting moderation');
         
         return redirect()->back();
-
-;
 
     }
 

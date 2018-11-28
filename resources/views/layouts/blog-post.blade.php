@@ -76,9 +76,12 @@
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
 
-                {{-- yielding blog-post.blade.php --}}
 
+
+                <!-- YIELDING POST.BLADE.PHP -->
                 @yield('content')
+
+                
 
 
             </div>

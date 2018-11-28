@@ -1,14 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.blog-home')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+        <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                <div class="panel-heading">Register</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                <div class="panel-body text-right">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -24,6 +24,24 @@
                                 @endif
                             </div>
                         </div>
+
+                        {{-- attempt to include role in register --}}
+                        {{-- <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+    
+                                <div class="col-md-6">
+                                    
+                                    {!! Form::select('role_id', [2 => 'author', 3 => 'subscriber'], ['class'=>'form-control ']) !!}
+
+                                    <input id="role" type="text" class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" name="role" value="{{ old('role') }}" required autofocus>
+    
+                                    @if ($errors->has('role'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('role') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div> --}}
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -61,13 +79,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="form-group row mb-0 text-center">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
-                            </div>
                         </div>
+
+
                     </form>
                 </div>
             </div>
