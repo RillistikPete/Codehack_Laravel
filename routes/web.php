@@ -29,6 +29,9 @@ Route::get('/logout', function() {
 
 Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'HomeController@post']);
 
+//get create post page for non-admin users: (taken out for now)
+//Route::get('post', 'HomeController@userCreatePost')->name('user-create-post');
+
 // ** Route group for middlewares
 Route::group(['middleware'=>'admin'], function() {
 
@@ -50,9 +53,12 @@ Route::delete('/delete/media', 'AdminMediaController@deleteMedia');
 
 Route::group(['middleware'=>'auth'], function(){
 
+    //Route::post('post', 'HomeController@store');
     Route::post('comment/reply', 'CommentRepliesController@createReply');
     Route::post('comment', 'PostCommentsController@store');
 });
+
+//Route::post('post', 'HomeController@store');
 
 //Laravel file-manager alpha-version only - route group to wrap package routes:
 // Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {

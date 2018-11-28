@@ -18,9 +18,8 @@
     <!-- Side Widget Well -->
     <div class="well">
             <h4>Laravel Blog</h4>
-            <p>Welcome to my blog. To create a new post or comment on existing posts, login or register a new account.
-                Feel free to create a new post about anything you'd like. 
-                Based on your activity, you will be assigned the role of "author" or "subscriber".</p>
+            <p>Welcome to my blog. To comment on existing posts, login or register a new account. 
+                You will be assigned as a subscriber.  For post ideas that will grant you the role "author", contact me at my email.</p>
     </div>
 
 

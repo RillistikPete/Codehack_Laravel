@@ -39,15 +39,25 @@ class HomeController extends Controller
         return view('front/home', compact('posts', 'post', 'user', 'comments', 'categories', 'year', 'postComments'));
     }
 
-        //this is for post.blade.php
-        public function post($slug){
+    //this is for post.blade.php
+    public function post($slug){
 
-            $user = Auth::user();
-            $post = Post::findBySlug($slug);
-            $categories = Category::all();
-            $comments = $post->comments()->whereIsActive(1)->get();
-            
-            return view('post', compact('post', 'comments', 'categories', 'user'));
+        $user = Auth::user();
+        $post = Post::findBySlug($slug);
+        $categories = Category::all();
+        $comments = $post->comments()->whereIsActive(1)->get();
+        
+        return view('post', compact('post', 'comments', 'categories', 'user'));
+
+    }
+
+    // public function userCreatePost() {
+
+    //     $user = Auth::user();
+    //     $categories = Category::pluck('name', 'id')->all();
+    //     return view('front.user-create-post', compact('categories', 'user'));
+        
+    // }
+
     
-        }
 }
