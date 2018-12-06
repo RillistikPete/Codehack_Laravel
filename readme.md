@@ -1,3 +1,13 @@
+## Codehack Blog
+Built with Laravel 5.7, PHP 7.1.16, mySQL. User authentication and registration. Middleware for administration and application management. Utliizes Eloquent ORM, Charts.js, TinyMCE, Gravatar, Disqus, and Dropzone.js. Uses <a href="https://github.com/cviebrock/eloquent-sluggable">eloquent-sluggable</a> for RESTful URL's. Created database seeding functionality. Uses <a href="https://webpack.js.org/">Webpack</a> / <a href="https://laravel.com/docs/5.7/mix">Laravel-Mix</a> / <a href="https://www.vagrantup.com/">Vagrant</a>.
+
+Project link:
+<a href="gavinfpk.com">gavinfpk.com</a>
+
+
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
