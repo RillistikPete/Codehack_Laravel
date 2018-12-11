@@ -86,7 +86,7 @@
                 
             <div class="media">
                 <a class="pull-left" href="#">
-                <img height="60" width="60" class="media-object" src="{{Auth::user() ? Auth::user()->gravatar : "/images/icon-user-default.png"}}" alt="">
+                <img height="60" width="60" class="media-object" src="{{Auth::user() && Auth::user()->name == $comment->author ? Auth::user()->gravatar : "/images/icon-user-default.png"}}" alt="">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">{{$comment->author}}
@@ -99,7 +99,7 @@
 
                     @foreach ($comment->replies as $reply)
                         
-                        @if ($reply->is_active == 1)
+                        @if ($reply->is_active == 1 && Auth::user())
 
                             <!-- Nested Comment -->
                             <div id="nested-comment" class="media">
@@ -137,8 +137,8 @@
                             </div>
                             <!-- End Nested Comment -->
 
-                        @else 
-                            <h1>No Replies</h1>   
+                        {{-- @else 
+                            <h3>No Replies</h3>    --}}
 
                         @endif
 

@@ -70,7 +70,6 @@
                         this.checked = false;
                     });
                 }
-                console.log('hello');
             });
         });
     </script>
