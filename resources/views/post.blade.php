@@ -81,7 +81,7 @@
                 
             <div class="media">
                 <a class="pull-left" href="#">
-                <img height="64" class="media-object" src="{{Auth::user() ? Auth::user()->gravatar : "/images/icon-user-default.png"}}" alt="">
+                <img height="64" class="media-object" src="{{Auth::user() && Auth::user()->name == $comment->author ? Auth::user()->gravatar : "/images/icon-user-default.png"}}" alt="">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">{{$comment->author}}
@@ -89,7 +89,8 @@
                     </h4>
                    <p>{{$comment->body}}</p>
                     
-
+                   {{-- <button class="pull-right btn btn-primary toggle-reply">Reply</button> --}}
+                    
                    @if(count($comment->replies) > 0)
 
                     @foreach ($comment->replies as $reply)
@@ -102,7 +103,7 @@
                                 <img class="media-object" height="64" src="{{$reply->photo}}" alt="">
                                 </a>
                                 <div class="media-body">
-                                    <h4 class="media-heading">{{$reply->author}}
+                                    <h4 class="media-heading">{{$reply->author}} 
                                         <small>{{$reply->created_at->diffForHumans()}}</small>
                                     </h4>
                                     <p>{{$reply->body}}</p>
@@ -132,8 +133,8 @@
                             </div>
                             <!-- End Nested Comment -->
 
-                        @else 
-                            <h1>No Replies</h1>   
+                         @else 
+                            <h3>No Replies</h3> 
 
                         @endif
 

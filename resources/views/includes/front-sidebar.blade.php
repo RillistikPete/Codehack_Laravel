@@ -19,7 +19,8 @@
     <div class="well">
             <h4>Laravel Blog</h4>
             <p>Welcome to my blog. To comment on existing posts, login or register a new account. 
-                You will be assigned as a subscriber.  For post ideas that will grant you the role "author", contact me at my email.</p>
+                You will be assigned as a subscriber.  For post ideas that will grant you the role "author", 
+                contact me at my <a href="/me#contact">email.</a></p>
     </div>
 
 
@@ -34,7 +35,7 @@
 
                         @foreach ($categories as $category)
                             
-                            <li><a href="#">{{$category->name}}</a>
+                            <li><a href="{{route('home.post', $post->slug, $category->id)}}">{{$category->name}}</a>
                             </li>
 
                         @endforeach

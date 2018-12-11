@@ -32,7 +32,7 @@ class HomeController extends Controller
     {
 
         $user = Auth::user();
-        $posts = Post::paginate(1);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(1);
         $postComments = Post::with('comments')->orderBy('created_at', 'desc')->get();
         $comments = Comment::all();
         $categories = Category::all();
