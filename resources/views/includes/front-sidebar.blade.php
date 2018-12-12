@@ -11,7 +11,6 @@
                 </button>
             </span>
         </div>
-        <!-- /.input-group -->
     </div>
 
 
