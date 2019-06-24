@@ -28,6 +28,7 @@ Route::get('/logout', function() {
 });
 
 Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'HomeController@post']);
+Route::get('/categ-posts', ['as'=>'home.categ-posts', 'uses'=>'HomeController@categPosts']);
 
 //get create post page for non-admin users: (taken out for now)
 //Route::get('post', 'HomeController@userCreatePost')->name('user-create-post');
