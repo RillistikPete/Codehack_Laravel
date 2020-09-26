@@ -51,6 +51,17 @@ class HomeController extends Controller
 
     }
 
+    public function categPosts($id){
+
+        $user = Auth::user();
+        $category = Category::with('posts')->orderBy('name', 'asc');
+        $categories = Category::all();
+        $posts = Post::where('category_id', '=', $id)->paginate(10);
+        //$posts = $categories->paginate(10);
+        return view('front/categ-posts', compact('posts', 'categories', 'category', 'user'));
+
+    }
+
     // public function userCreatePost() {
 
     //     $user = Auth::user();

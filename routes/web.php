@@ -12,7 +12,8 @@
 */
 use App\User;
 use \Unisharp\LaravelFilemanager;
-
+// use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'HomeController@index');
 
@@ -28,6 +29,7 @@ Route::get('/logout', function() {
 });
 
 Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'HomeController@post']);
+Route::get('/categ-posts/{id}', ['as'=>'home.categ-posts', 'uses'=>'HomeController@categPosts']);
 
 //get create post page for non-admin users: (taken out for now)
 //Route::get('post', 'HomeController@userCreatePost')->name('user-create-post');

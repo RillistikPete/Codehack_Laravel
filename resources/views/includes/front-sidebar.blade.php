@@ -11,7 +11,6 @@
                 </button>
             </span>
         </div>
-        <!-- /.input-group -->
     </div>
 
 
@@ -35,7 +34,7 @@
 
                         @foreach ($categories as $category)
                             
-                            <li><a href="{{route('home.post', $post->slug, $category->id)}}">{{$category->name}}</a>
+                            <li><a href="{{route('home.categ-posts', $category->id)}}">{{$category->name}}</a>
                             </li>
 
                         @endforeach

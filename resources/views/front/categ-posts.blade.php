@@ -36,7 +36,6 @@
     
                 <hr>
                     
-                <div id="disqus_thread"></div>
                 
             @endforeach
 
