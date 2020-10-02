@@ -1,3 +1,15 @@
+## Codehack Blog
+Built with Laravel 5.7, PHP 7.1.16, mySQL. User authentication and registration. Middleware for administration and application management. Utliizes Eloquent ORM, Charts.js, TinyMCE, Gravatar, Disqus, and Dropzone.js. Uses <a href="https://github.com/cviebrock/eloquent-sluggable">eloquent-sluggable</a> for RESTful URL's. Created database seeding functionality. Uses <a href="https://webpack.js.org/">Webpack</a> / <a href="https://laravel.com/docs/5.7/mix">Laravel-Mix</a> / <a href="https://www.vagrantup.com/">Vagrant</a>.
+
+Project link:
+<a href="http://gavinfpk.com">gavinfpk.com</a>
+
+
+
+
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
@@ -25,7 +37,7 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost your and your entire team's skill level by digging into our comprehensive video library.
 
 ## Laravel Sponsors
 
