@@ -30,13 +30,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $user = Auth::user();
         $posts = Post::orderBy('created_at', 'desc')->paginate(5);
         $postComments = Post::with('comments')->orderBy('created_at', 'desc')->get();
         $comments = Comment::all();
         $categories = Category::all();
-        return view('front/home', compact('posts', 'user', 'comments', 'categories', 'year', 'postComments'));
+        return view('front/home', compact('posts', 'user', 'comments', 'categories', 'postComments'));
+        //removed 'post' and 'year' from compact - heroku dep
     }
 
     //this is for post.blade.php
