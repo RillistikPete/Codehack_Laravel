@@ -13,7 +13,6 @@ use Cviebrock\EloquentSluggable\Sluggable;
 // for AdminPostsController@post to be able to find by slug
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
-
 class AdminPostsController extends Controller
 {
     /**
