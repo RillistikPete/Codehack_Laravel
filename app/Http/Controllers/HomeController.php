@@ -31,7 +31,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(9);
         $postComments = Post::with('comments')->orderBy('created_at', 'desc')->get();
         $comments = Comment::all();
         $categories = Category::all();
@@ -56,7 +56,7 @@ class HomeController extends Controller
         $user = Auth::user();
         $category = Category::with('posts')->orderBy('name', 'asc');
         $categories = Category::all();
-        $posts = Post::where('category_id', '=', $id)->paginate(10);
+        $posts = Post::where('category_id', '=', $id)->orderBy('created_at', 'desc')->paginate(5);
         //$posts = $categories->paginate(10);
         return view('front/categ-posts', compact('posts', 'categories', 'category', 'user'));
 
