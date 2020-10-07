@@ -1,7 +1,7 @@
 <div class="col-md-4">
 
     <!-- Blog Search Well -->
-    <div class="well">
+    {{-- <div class="well">
         <h4>Blog Search</h4>
         <div class="input-group">
             <input type="text" class="form-control">
@@ -11,15 +11,15 @@
                 </button>
             </span>
         </div>
-    </div>
+    </div> --}}
 
 
     <!-- Side Widget Well -->
     <div class="well">
             <h4>Laravel Blog</h4>
             <p>Welcome to my blog. To comment on existing posts, login or register a new account. 
-                You will be assigned as a subscriber.  For post ideas that will grant you the role "author", 
-                contact me at my <a href="/me#contact">email.</a></p>
+                You will be assigned as a subscriber.  If you have an idea for a post, contact me and I'll grant you the role "author",
+                allowing you to leave posts! You can reach me at my <a href="/me#contact">email.</a></p>
     </div>
 
 
