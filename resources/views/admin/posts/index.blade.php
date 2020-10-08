@@ -15,6 +15,7 @@
                 <th>Photo</th>
                 <th>Title</th>
                 <th>User</th>
+                <th>Edit Post</th>
                 <th>Category</th>
                 <th>View Post</th>
                 <th>Comments</th>
@@ -31,7 +32,8 @@
                     <td>{{$post->id}}</td>
                     <td><img src="{{$post->photo ? $post->photo->file : '/images/placeholder.jpg'}}" height="50" alt="Hi"/></td>
                     <td>{{$post->title}}</td>
-                    <td><a href="{{route('posts.edit', $post->id)}}">{{$post->user->name}}</a></td>
+                    <td>{{$post->user->name}}</td>
+                    <td><a href="{{route('posts.edit', $post->id)}}">Edit</a></td>
                     <td>{{$post->category_id ? $post->category->name : 'Uncategorized'}}</td>
 
                     {{-- send slug here instead of post->id bc you want slug title in the url not number --}}
