@@ -15,22 +15,29 @@
         @if ($posts)
                     
             @foreach ($posts as $post)
-    
+            {{-- <h1>@dd(substr($post->photo->file, 8))</h1> --}}
             <h2>
                 <a href="/post/{{$post->slug}}">{{$post->title}}</a>
             </h2>
-                <p class="lead">
-                    by {{$post->user->name}}
-                </p>
-                <p><span class="glyphicon glyphicon-time"></span> Created {{$post->created_at->diffForHumans()}}</p>
+            
+            <p class="lead">
+                by {{$post->user->name}}
+            </p>
+            <p><span class="glyphicon glyphicon-time"></span> Created {{$post->created_at->diffForHumans()}}</p>
+            <hr>
+            @foreach ($s3ObjectsUrlArray as $url)
+                @foreach ($arrayS3PicKeys as $key)
+                    @if (strtok($key, "/") === substr($post->photo->file, 8))
+                    <p>hi true</p>
+                    <img class="img-responsive" src="{{ $url ? $url : "http://placehold.it/900x300"}}" alt="">
+                    @endif
+                @endforeach
+            @endforeach
                 <hr>
-                <img class=" img-responsive" src="{{$post->photo ? $post->photo->file : "http://placehold.it/900x300"}}" alt="">
-                <hr>
-    
-                        <p>
-                                {!! $post->body !!}
-                            {{-- {!!str_limit($post->body , 200)!!} --}}
-                        </p>
+                    <p>
+                        {!! $post->body !!}
+                        {{-- {!!str_limit($post->body , 200)!!} --}}
+                    </p>
     
                 <a class="btn btn-primary" href="/post/{{$post->slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
     

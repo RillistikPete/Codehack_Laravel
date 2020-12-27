@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Aws\S3\S3Client;
+use Aws\S3\Exception\S3Exception;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
@@ -50,20 +52,55 @@ class AdminPostsController extends Controller
         $input = $request->all();
         $user = Auth::user();
 
+        // if($file = $request->file('photo_id')) {
+        //     // If you have file, get the original name of it,
+        //     // then move it to the images folder,
+        //     // then create a photo, then in 'Create Post', insert photo id
+        //     $name = time() . $file->getClientOriginalName();
+        //     $file->move('images', $name);
+        //     $photo = Photo::create(['file'=>$name]);
+        //     $input['photo_id'] = $photo->id;
+
+        //Need to upload to S3 bucket instead of moving to image folder
         if($file = $request->file('photo_id')) {
             // If you have file, get the original name of it,
             // then move it to the images folder,
             // then create a photo, then in 'Create Post', insert photo id
-            $name = time() . $file->getClientOriginalName();
-            $file->move('images', $name);
+
+
+            $name = $file->getClientOriginalName();
+            // $file->move('images', $name);
+            $file->store($file->getClientOriginalName(), 's3');
             $photo = Photo::create(['file'=>$name]);
             $input['photo_id'] = $photo->id;
         }
 
+        // $s3Client = new S3Client([
+        //             'version' => 'latest',
+        //             'region' => 'us-east-2'
+        //         ]);
+
+        // $bucket = 'codehack-heroku-photos';
+        // $keys3 = 'anus/' . basename($_FILES["file"]['name']);
+
+        // try {
+        //     $file = $_FILES["file"]['name'];
+        //     $s3Client->putObject(
+        //         array(
+        //             'Bucket'=>$bucket,
+        //             'Key'=>$keys3,
+        //             'SourceFile'=> $file,
+        //             'StorageClass'=>'REDUCE_REDUNDANCY'
+
+        //             )
+        //         );
+        // } catch (S3Exception $exc) {
+        //     die('Error: ' . $exc->getMessage());
+        // }
+
         $user->posts()->create($input);
         
         return redirect('/admin/posts');
-
     }
 
     /**
