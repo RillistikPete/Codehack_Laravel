@@ -28,7 +28,6 @@
             @foreach ($s3ObjectsUrlArray as $url)
                 @foreach ($arrayS3PicKeys as $key)
                     @if (strtok($key, "/") === substr($post->photo->file, 8))
-                    <p>hi true</p>
                     <img class="img-responsive" src="{{ $url ? $url : "http://placehold.it/900x300"}}" alt="">
                     @endif
                 @endforeach

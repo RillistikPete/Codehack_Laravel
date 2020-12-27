@@ -26,7 +26,13 @@
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-responsive" src="{{$post->photo ? $post->photo->file : $post->photoPlaceholder()}}" alt="">
+                @foreach ($s3ObjectsUrlArray as $url)
+									@foreach ($arrayS3PicKeys as $key)
+											@if (strtok($key, "/") === substr($post->photo->file, 8))
+											<img class="img-responsive" src="{{ $url ? $url : $post->photoPlaceholder() }}" alt="{{ $post->photo->file }}">
+											@endif
+									@endforeach
+                @endforeach
 
                 <hr>
 
