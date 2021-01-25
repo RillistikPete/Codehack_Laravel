@@ -33,6 +33,7 @@ class Post extends Model
     protected $fillable = [
         'category_id',
         'photo_id',
+        'obj_url',
         'title',
         'body'
     ];
@@ -50,6 +51,11 @@ class Post extends Model
         return $this->belongsTo('App\Photo');
 
     }
+
+    // public function obj_url() {
+
+    //     return $this->belongsTo('App\Obj_Url');
+    // }
 
     public function category() {
 

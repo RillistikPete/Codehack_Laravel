@@ -57,9 +57,9 @@ class AdminPostsController extends Controller
             // If you have file, get the original name of it,
             // then move it to the images folder,
             // then create a photo, then in 'Create Post', insert photo id
-            $name = $file->getClientOriginalName();
+            $name = str_replace(' ', '-', $file->getClientOriginalName());
             // $file->move('images', $name);
-            $file->store($file->getClientOriginalName(), 's3');
+            $file->store($name, 's3');
             $photo = Photo::create(['file'=>$name]);
             $input['photo_id'] = $photo->id;
         }
@@ -128,7 +128,7 @@ class AdminPostsController extends Controller
     {
         $post = Post::findOrFail($id);
         
-        unlink(public_path() . $post->photo->file);
+        // unlink(public_path() . $post->photo->file);
         $post->delete();
 
         return redirect('/admin/posts');

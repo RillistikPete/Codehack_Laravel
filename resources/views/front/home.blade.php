@@ -25,13 +25,7 @@
             </p>
             <p><span class="glyphicon glyphicon-time"></span> Created {{$post->created_at->diffForHumans()}}</p>
             <hr>
-            @foreach ($s3ObjectsUrlArray as $url)
-                @foreach ($arrayS3PicKeys as $key)
-                    @if (strtok($key, "/") === substr($post->photo->file, 8))
-                    <img class="img-responsive" src="{{ $url ? $url : "http://placehold.it/900x300"}}" alt="">
-                    @endif
-                @endforeach
-            @endforeach
+            <img class="img-responsive" src="{{ $post->obj_url ? $post->obj_url : "http://placehold.it/900x300" }}" alt="">
                 <hr>
                     <p>
                         {!! $post->body !!}

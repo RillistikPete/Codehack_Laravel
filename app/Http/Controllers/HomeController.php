@@ -51,10 +51,18 @@ class HomeController extends Controller
             $url = $s3Client->getObjectUrl($bucket, $key);
             array_push($s3ObjectsUrlArray, $url);
         }
-        echo "<script>console.log('s3ObjectsUrlArray - " . json_encode($s3ObjectsUrlArray) . "');</script>";
+        echo "<script>console.log('post->obj_url - " . json_encode($s3ObjectsUrlArray) . "');</script>";
         //=================================================
         $user = Auth::user();
         $posts = Post::orderBy('created_at', 'desc')->paginate(9);
+        foreach($posts as $post){
+            foreach ($s3ObjectsUrlArray as $objUrl) {
+                if (str_contains($objUrl, substr($post->photo->file, 8))) {
+                    $post->obj_url = $objUrl;
+                    echo "<script>console.log('post->obj_url - " . $post->obj_url . "');</script>";
+                }
+            }
+        }
         $postComments = Post::with('comments')->orderBy('created_at', 'desc')->get();
         $comments = Comment::all();
         $categories = Category::all();
@@ -86,7 +94,19 @@ class HomeController extends Controller
         }
         //=================================================
         $user = Auth::user();
-        $post = Post::findBySlug($slug);
+        $post = Post::findBySlug($slug); 
+        if(!$post->obj_url) {
+            echo "<script>console.log('objurl doesnt exist')</script>";
+            foreach($s3ObjectsUrlArray as $obj_url){
+                if (str_contains($obj_url, substr($post->photo->file, 8))) {
+                        $post->obj_url = $obj_url;
+                        $post->save();
+                }
+            }
+        }
+        else {
+            echo "<script>console.log('objurl exists')</script>";
+        }
         $categories = Category::all();
         $comments = $post->comments()->whereIsActive(1)->get();
         

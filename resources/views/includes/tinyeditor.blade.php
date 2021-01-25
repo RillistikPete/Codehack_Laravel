@@ -1,4 +1,5 @@
-<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+{{-- <script src="//cdn.tinymce.com/4/tinymce.min.js"></script> --}}
+<script src="https://cdn.tiny.cloud/1/o64d18t923h6rl42epeme3j4j5mxxbakmxzgso272sfm85py/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
   var editor_config = {
     path_absolute : "/",
