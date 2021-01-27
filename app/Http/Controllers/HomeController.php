@@ -95,11 +95,11 @@ class HomeController extends Controller
         //=================================================
         $user = Auth::user();
         $post = Post::findBySlug($slug); 
+        echo "<script>console.log('post photo file " . $post->photo->file . "')</script>";
         if(!$post->obj_url) {
             echo "<script>console.log('objurl doesnt exist')</script>";
             foreach($s3ObjectsUrlArray as $obj_url){
                 if (str_contains($obj_url, substr($post->photo->file, 8))) {
-                    echo "<script>console.log('objurl contained in post photo file " . $post->photo->file . "')</script>";
                         $post->obj_url = $obj_url;
                         $post->save();
                 }
