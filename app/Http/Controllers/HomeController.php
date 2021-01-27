@@ -51,7 +51,7 @@ class HomeController extends Controller
             $url = $s3Client->getObjectUrl($bucket, $key);
             array_push($s3ObjectsUrlArray, $url);
         }
-        echo "<script>console.log('post->obj_url - " . json_encode($s3ObjectsUrlArray) . "');</script>";
+        echo "<script>console.log('obj_url arr- " . json_encode($s3ObjectsUrlArray) . "');</script>";
         //=================================================
         $user = Auth::user();
         $posts = Post::orderBy('created_at', 'desc')->paginate(9);
@@ -99,6 +99,7 @@ class HomeController extends Controller
             echo "<script>console.log('objurl doesnt exist')</script>";
             foreach($s3ObjectsUrlArray as $obj_url){
                 if (str_contains($obj_url, substr($post->photo->file, 8))) {
+                    echo "<script>console.log('objurl contained in post photo file " . $post->photo->file . "')</script>";
                         $post->obj_url = $obj_url;
                         $post->save();
                 }
