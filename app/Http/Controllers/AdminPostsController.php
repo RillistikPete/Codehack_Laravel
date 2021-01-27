@@ -106,7 +106,7 @@ class AdminPostsController extends Controller
         $input = $request->all();
         //again, checking to see if photo exists, if not, create it:
         if($file = $request->file('photo_id')) {
-            $name = time() . $file->getClientOriginalName();
+            $name = $file->getClientOriginalName();
             $file->move('images', $name);
             $photo = Photo::create(['file'=>$name]);
             $input['photo_id'] = $photo->id;
