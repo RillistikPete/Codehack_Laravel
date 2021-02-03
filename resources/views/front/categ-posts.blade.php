@@ -25,23 +25,17 @@
                 <p><span class="glyphicon glyphicon-time"></span> Created {{$post->created_at->diffForHumans()}}</p>
                 <hr>
 
-                @foreach ($s3ObjectsUrlArray as $url)
-									@foreach ($arrayS3PicKeys as $key)
-										@if (strtok($key, "/") === substr($post->photo->file, 8))
-											<img class="img-responsive" src="{{ $url ? $url : $post->photoPlaceholder() }}" alt="{{ $post->photo->file }}">
-										@endif
-									@endforeach
-                @endforeach
+                <img class="img-responsive" src="{{ $post->obj_url ? $post->obj_url : $post->photoPlaceholder() }}" alt="{{ $post->photo->file }}">
 
                 <hr>
-									<p>
-										{!! $post->body !!}
-										{{-- {!!str_limit($post->body , 200)!!} --}}
-									</p>
+                <p>
+                    {!! $post->body !!}
+                    {{-- {!!str_limit($post->body , 200)!!} --}}
+                </p>
     
                 <a class="btn btn-primary" href="/post/{{$post->slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
     
-								<hr>
+				<hr>
 								
             @endforeach
 

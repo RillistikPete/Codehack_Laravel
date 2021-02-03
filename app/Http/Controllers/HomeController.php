@@ -45,7 +45,6 @@ class HomeController extends Controller
         foreach ($iterator as $obj){
             array_push($arrayS3PicKeys, $obj['Key']);
         }
-        //loop through keys and get url for each, push to array of urls, compact
         $s3ObjectsUrlArray = array();
         foreach ($arrayS3PicKeys as $key) {
             $url = $s3Client->getObjectUrl($bucket, $key);
@@ -100,8 +99,8 @@ class HomeController extends Controller
             echo "<script>console.log('objurl doesnt exist')</script>";
             foreach($s3ObjectsUrlArray as $obj_url){
                 if (str_contains($obj_url, substr($post->photo->file, 8))) {
-                        $post->obj_url = $obj_url;
-                        $post->save();
+                    $post->obj_url = $obj_url;
+                    $post->save();
                 }
             }
         }
@@ -111,28 +110,28 @@ class HomeController extends Controller
         $categories = Category::all();
         $comments = $post->comments()->whereIsActive(1)->get();
         
-        return view('post', compact('post', 'comments', 'categories', 'user', 'arrayS3PicKeys', 's3ObjectsUrlArray'));
+        return view('post', compact('post', 'comments', 'categories', 'user'));
     }
 
     public function categPosts($id){
         
-        $s3Client = new S3Client([
-            'version' => 'latest',
-            'region' => 'us-east-2'
-        ]);
-        $bucket = 'codehack-heroku-photos';
-        $iterator = $s3Client->getIterator('ListObjects', array(
-            'Bucket' => $bucket
-        ));
-        $arrayS3PicKeys = array();
-        foreach ($iterator as $obj){
-            array_push($arrayS3PicKeys, $obj['Key']);
-        }
-        $s3ObjectsUrlArray = array();
-        foreach ($arrayS3PicKeys as $key) {
-            $url = $s3Client->getObjectUrl($bucket, $key);
-            array_push($s3ObjectsUrlArray, $url);
-        }
+        // $s3Client = new S3Client([
+        //     'version' => 'latest',
+        //     'region' => 'us-east-2'
+        // ]);
+        // $bucket = 'codehack-heroku-photos';
+        // $iterator = $s3Client->getIterator('ListObjects', array(
+        //     'Bucket' => $bucket
+        // ));
+        // $arrayS3PicKeys = array();
+        // foreach ($iterator as $obj){
+        //     array_push($arrayS3PicKeys, $obj['Key']);
+        // }
+        // $s3ObjectsUrlArray = array();
+        // foreach ($arrayS3PicKeys as $key) {
+        //     $url = $s3Client->getObjectUrl($bucket, $key);
+        //     array_push($s3ObjectsUrlArray, $url);
+        // }
         //=================================================
         $user = Auth::user();
         $category = Category::with('posts')->orderBy('name', 'asc');
@@ -140,16 +139,5 @@ class HomeController extends Controller
         $posts = Post::where('category_id', '=', $id)->orderBy('created_at', 'desc')->paginate(5);
         //$posts = $categories->paginate(10);
         return view('front/categ-posts', compact('posts', 'categories', 'category', 'user', 'arrayS3PicKeys', 's3ObjectsUrlArray'));
-
     }
-
-    // public function userCreatePost() {
-
-    //     $user = Auth::user();
-    //     $categories = Category::pluck('name', 'id')->all();
-    //     return view('front.user-create-post', compact('categories', 'user'));
-        
-    // }
-
-    
 }
