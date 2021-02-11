@@ -34,10 +34,7 @@
     
                 <a class="btn btn-primary" href="/post/{{$post->slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
     
-                <hr>
-                    
-                <div id="disqus_thread"></div>
-                
+                <hr style="margin-bottom:36px;">
             @endforeach
 
         @endif
@@ -161,16 +158,8 @@
             @include('includes.front-sidebar')
 
         </div> <!-- ROW -->
-
-
-
-        {{-- DISQUS  --}}
-        
-        
+      
             <hr><hr>
-                
-            <div id="disqus_thread"></div>
-
 
                  <!-- Pagination -->
                  <div class="row text-center">

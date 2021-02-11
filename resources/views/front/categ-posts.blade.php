@@ -13,7 +13,7 @@
     <div class="col-md-8">
 
         @if ($posts)
-                    
+     
             @foreach ($posts as $post)
     
             <h2>
@@ -35,7 +35,7 @@
     
                 <a class="btn btn-primary" href="/post/{{$post->slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
     
-				<hr>
+				<hr style="margin-bottom:36px;">
 								
             @endforeach
 
@@ -161,16 +161,6 @@
 
         </div> <!-- ROW -->
 
-
-
-        {{-- DISQUS  --}}
-        
-        
-            <hr><hr>
-                
-            <div id="disqus_thread"></div>
-
-
                  <!-- Pagination -->
                  <div class="row text-center">
                      {{$posts->render()}}
@@ -200,12 +190,12 @@
     this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     */
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://codehacking-vqxykezwu5.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
+    // (function() { // DON'T EDIT BELOW THIS LINE
+    // var d = document, s = d.createElement('script');
+    // s.src = 'https://codehacking-vqxykezwu5.disqus.com/embed.js';
+    // s.setAttribute('data-timestamp', +new Date());
+    // (d.head || d.body).appendChild(s);
+    // })();
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             

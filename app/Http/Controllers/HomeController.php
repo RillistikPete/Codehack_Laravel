@@ -136,8 +136,15 @@ class HomeController extends Controller
         $user = Auth::user();
         $category = Category::with('posts')->orderBy('name', 'asc');
         $categories = Category::all();
-        $posts = Post::where('category_id', '=', $id)->orderBy('created_at', 'desc')->paginate(5);
-        //$posts = $categories->paginate(10);
+        // $posts = Post::where('category_id', '=', $id)->orderBy('created_at', 'desc')->paginate(5);
+        $posts = Post::where('category_id', '=', $id)
+        ? Post::where('category_id', '=', $id)->orderBy('created_at', 'desc')->paginate(5)
+        : null;
+        dd($posts);
+        if ($posts->total() === 0) {
+            abort(400);
+        }
+        // $posts = $categories->paginate(10);
         return view('front/categ-posts', compact('posts', 'categories', 'category', 'user', 'arrayS3PicKeys', 's3ObjectsUrlArray'));
     }
 }
