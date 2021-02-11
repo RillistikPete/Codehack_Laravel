@@ -114,33 +114,13 @@ class HomeController extends Controller
     }
 
     public function categPosts($id){
-        
-        // $s3Client = new S3Client([
-        //     'version' => 'latest',
-        //     'region' => 'us-east-2'
-        // ]);
-        // $bucket = 'codehack-heroku-photos';
-        // $iterator = $s3Client->getIterator('ListObjects', array(
-        //     'Bucket' => $bucket
-        // ));
-        // $arrayS3PicKeys = array();
-        // foreach ($iterator as $obj){
-        //     array_push($arrayS3PicKeys, $obj['Key']);
-        // }
-        // $s3ObjectsUrlArray = array();
-        // foreach ($arrayS3PicKeys as $key) {
-        //     $url = $s3Client->getObjectUrl($bucket, $key);
-        //     array_push($s3ObjectsUrlArray, $url);
-        // }
-        //=================================================
+
         $user = Auth::user();
         $category = Category::with('posts')->orderBy('name', 'asc');
         $categories = Category::all();
-        // $posts = Post::where('category_id', '=', $id)->orderBy('created_at', 'desc')->paginate(5);
         $posts = Post::where('category_id', '=', $id)
         ? Post::where('category_id', '=', $id)->orderBy('created_at', 'desc')->paginate(5)
         : null;
-        dd($posts);
         if ($posts->total() === 0) {
             abort(400);
         }
