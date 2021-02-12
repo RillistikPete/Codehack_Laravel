@@ -45,6 +45,11 @@
 
         </div> <!-- /.row -->
     </div>
-
-
 </div>
+
+<style type="text/css">
+    .well {
+        box-shadow:1px;
+        border-radius:10px;
+    }
+</style>

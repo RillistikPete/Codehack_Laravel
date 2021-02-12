@@ -24,8 +24,8 @@ class AdminPostsController extends Controller
      */
     public function index()
     {   
-        //instead of Post::all(), you can show only 2 or however many you want per page:
-        $posts = Post::paginate(9);
+        // $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(9);
         return view('admin.posts.index', compact('posts'));
     }
     

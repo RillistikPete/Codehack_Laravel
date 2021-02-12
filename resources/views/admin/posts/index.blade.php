@@ -30,7 +30,7 @@
                 
                 <tr>
                     <td>{{$post->id}}</td>
-                    <td><img src="{{$post->photo ? $post->photo->file : '/images/placeholder.jpg'}}" height="50" alt="Hi"/></td>
+                    <td><img src="{{ $post->obj_url ? $post->obj_url : $post->photoPlaceholder() }}" height="50" alt="{{ $post->photo->file }}"/></td>
                     <td>{{$post->title}}</td>
                     <td>{{$post->user->name}}</td>
                     <td><a href="{{route('posts.edit', $post->id)}}">Edit</a></td>
