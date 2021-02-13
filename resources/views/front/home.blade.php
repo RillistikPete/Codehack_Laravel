@@ -27,14 +27,15 @@
             <hr>
             <img class="img-responsive" src="{{ $post->obj_url ? $post->obj_url : "http://placehold.it/900x300" }}" alt="">
                 <hr>
-                    <p>
+                    <div id="postBody">
                         {!! $post->body !!}
                         {{-- {!!str_limit($post->body , 200)!!} --}}
-                    </p>
+                    </div>
+            <div id="go-to-post">
+                <a class="btn btn-primary" href="/post/{{$post->slug}}">Go to post <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
     
-                <a class="btn btn-primary" href="/post/{{$post->slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-    
-                <hr style="margin-bottom:36px;">
+                <hr id="bottomHr">
             @endforeach
 
         @endif
