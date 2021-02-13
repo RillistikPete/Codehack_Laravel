@@ -42,10 +42,14 @@ body {
     font-size: 14px;
 }
 
-#go-to-post, #bottomHr {
+#go-to-post {
     text-align:center;
 }
 
 #postBody {
     font-size: 15px;
+}
+
+#bottomHr {
+    margin-bottom:36px;
 }
