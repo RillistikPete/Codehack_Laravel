@@ -47,9 +47,9 @@ body {
 }
 
 #postBody {
-    font-size: 15px;
+    font-size: 15px !important; 
 }
 
 #bottomHr {
-    margin-bottom:36px;
+    margin-bottom:36px !important;
 }
