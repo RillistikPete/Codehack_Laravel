@@ -31,7 +31,7 @@
                         {!! $post->body !!}
                         {{-- {!!str_limit($post->body , 200)!!} --}}
                     </div>
-            <div id="go-to-post">
+            <div class="text-center">
                 <a class="btn btn-primary" href="/post/{{$post->slug}}">Go to post <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
     
