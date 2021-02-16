@@ -107,7 +107,7 @@ class AdminPostsController extends Controller
         // checking to see if photo exists, if not, create it:
         if($file = $request->file('photo_id')) {
             $name = str_replace(' ', '-', $file->getClientOriginalName());
-            $file->move('images', $name);
+            // $file->move('images', $name);
             $file->store('s3', $name);
             $photo = Photo::create(['file'=>$name]);
             $input['photo_id'] = $photo->id;
