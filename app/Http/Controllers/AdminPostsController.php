@@ -108,6 +108,7 @@ class AdminPostsController extends Controller
         if($file = $request->file('photo_id')) {
             $name = str_replace(' ', '-', $file->getClientOriginalName());
             $file->move('images', $name);
+            $file->store('s3', $name);
             $photo = Photo::create(['file'=>$name]);
             $input['photo_id'] = $photo->id;
         }
