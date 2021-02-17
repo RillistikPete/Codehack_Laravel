@@ -33,9 +33,11 @@
                     {{-- {!!str_limit($post->body , 200)!!} --}}
                 </p>
     
-                <a class="btn btn-primary" href="/post/{{$post->slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-    
-				<hr style="margin-bottom:36px;">
+                <div class="text-center">
+                    <a class="btn btn-primary" href="/post/{{$post->slug}}">Go to post <span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+        
+                <hr id="bottomHr">
 								
             @endforeach
 

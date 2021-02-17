@@ -104,6 +104,12 @@ class AdminPostsController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
+
+
+        
+        // delete post objurl so that it will update after refresh!
+
+
         // checking to see if photo exists, if not, create it:
         if($file = $request->file('photo_id')) {
             $name = str_replace(' ', '-', $file->getClientOriginalName());
