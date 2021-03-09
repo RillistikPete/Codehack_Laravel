@@ -56,9 +56,11 @@ class HomeController extends Controller
         $posts = Post::orderBy('created_at', 'desc')->paginate(9);
         foreach($posts as $post){
             foreach ($s3ObjectsUrlArray as $objUrl) {
-                if (str_contains($objUrl, substr($post->photo->file, 8))) {
-                    $post->obj_url = $objUrl;
-                    echo "<script>console.log('post->obj_url - " . $post->obj_url . "');</script>";
+                if($post->photo->file){
+                    if (str_contains($objUrl, substr($post->photo->file, 8))) {
+                        $post->obj_url = $objUrl;
+                        echo "<script>console.log('post->obj_url - " . $post->obj_url . "photo" . $post->photo->file . "');</script>";
+                    }
                 }
             }
         }
@@ -95,7 +97,7 @@ class HomeController extends Controller
         $user = Auth::user();
         $post = Post::findBySlug($slug); 
         echo "<script>console.log('post photo file " . $post->photo->file . "')</script>";
-        if(!$post->obj_url) {
+        if(!$post->obj_url && $post->photo->file) {
             echo "<script>console.log('objurl doesnt exist')</script>";
             foreach($s3ObjectsUrlArray as $obj_url){
                 if (str_contains($obj_url, substr($post->photo->file, 8))) {
