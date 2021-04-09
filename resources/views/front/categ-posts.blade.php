@@ -16,7 +16,7 @@
      
             @foreach ($posts as $post)
     
-            <h2>
+            <h2 id="postTitle">
                 <a href="/post/{{$post->slug}}">{{$post->title}}</a>
             </h2>
                 <p class="lead">

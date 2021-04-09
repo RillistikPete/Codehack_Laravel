@@ -16,7 +16,7 @@
                     
             @foreach ($posts as $post)
             {{-- <h1>@dd(substr($post->photo->file, 8))</h1> --}}
-            <h2>
+            <h2 id="postTitle">
                 <a href="/post/{{$post->slug}}">{{$post->title}}</a>
             </h2>
             

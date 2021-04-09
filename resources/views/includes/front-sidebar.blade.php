@@ -17,9 +17,9 @@
     <!-- Side Widget Well -->
     <div class="well">
             <h4>Laravel Blog</h4>
-            <p>Welcome to my blog. To comment on existing posts, login or register a new account. 
-                You will be assigned as a subscriber.  If you have an idea for a post, contact me and I'll grant you the role "author",
-                allowing you to leave posts! You can reach me at my <a href="/me#contact">email.</a></p>
+            <p>This blog was built with Laravel 5.7. To comment on existing posts, login or register a new account. 
+                You will be assigned as a subscriber. If you have an idea for a post, contact me and I'll grant you the role "author",
+                allowing you to leave posts. Reach me at my <a href="/me#contact">email.</a></p>
     </div>
 
     <?php 
@@ -39,7 +39,7 @@
             mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
             echo "Mail Sent. Thank you " . $first_name . ", we will contact you shortly.";
             // You can also use header('Location: thank_you.php'); to redirect to another page.
-            }
+        }
     ?>
     
     {{-- <h1>Form submission</h1>

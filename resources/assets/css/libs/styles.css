@@ -49,3 +49,45 @@ body {
 #bottomHr {
     margin-bottom:36px !important;
 }
+
+/* navbar */
+
+.navbar {
+    background-color: slategray;
+    opacity: 0.9;
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+}
+
+#usernameAdmin a {
+    color: #245076;
+    text-decoration: none;
+}
+#usernameAdmin a:hover {
+    text-shadow: 0 0 3px white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.navbar.navbar-default.navbar-static-top {
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    background-color: #49576D;
+}
+
+.navbar-right {
+    margin-top: 6px;
+}
+
+.navbar-inverse {
+    border: none !important;
+}
+
+#postTitle a{
+    text-decoration: none;
+    color: #337ab7;
+}
+
+#postTitle a:hover {
+    text-shadow: 0 0 1.1px #245076;
+}
