@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Blog Home</a>
+            <a class="navbar-brand" id="blogHome" href="/">Blog Home</a>
             {{-- <a class="navbar-brand" style="margin-left:12px;" href="/post">Create Post</a> --}}
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -18,10 +18,10 @@
                 @if(Auth::guest())
 
                     <li>
-                        <a href="{{url('/login')}}">Login</a>
+                        <a id="loginRegLink" href="{{url('/login')}}">Login</a>
                     </li>
                     <li>
-                        <a href="{{url('/register')}}">Register</a>
+                        <a id="loginRegLink" href="{{url('/register')}}">Register</a>
                     </li>
 
                 @elseif($user->isAdmin())

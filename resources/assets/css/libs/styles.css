@@ -91,3 +91,18 @@ body {
 #postTitle a:hover {
     text-shadow: 0 0 1.1px #245076;
 }
+
+#blogHome {
+    color: #245076;
+}
+
+#blogHome:hover {
+    text-shadow: 0 0 1.1px #245076;
+}
+
+#loginRegLink {
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+}

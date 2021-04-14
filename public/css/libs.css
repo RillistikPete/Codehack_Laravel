@@ -8751,7 +8751,8 @@ body {
 
 .navbar {
     background-color: slategray;
-s    -webkit-box-shadow: 0 8px 6px -6px #999;
+    /* opacity: 0.9; */
+    -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
     box-shadow: 0 8px 6px -6px #999;
 }
@@ -8786,4 +8787,19 @@ s    -webkit-box-shadow: 0 8px 6px -6px #999;
 
 #postTitle a:hover {
     text-shadow: 0 0 1.1px #245076;
+}
+
+#blogHome {
+    color: #245076;
+}
+
+#blogHome:hover {
+    text-shadow: 0 0 1.1px #245076;
+}
+
+#loginRegLink {
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
 }
