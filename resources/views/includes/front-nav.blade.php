@@ -27,7 +27,7 @@
                 @elseif($user->isAdmin())
 
                     <li>
-                        <h4 style="color:white;padding-right:20px;"> {{Auth::user()->name}} </h4>
+                        <h4 id="usernm"> {{Auth::user()->name}} </h4>
                     </li>
                     <li>
                         <h4 style="padding-right:20px;"><a href="{{url('/admin')}}">Admin</a></h4>
