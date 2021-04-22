@@ -22,7 +22,7 @@
                 allowing you to leave posts. Reach me at my <a href="/me#contact">email.</a></p>
     </div>
 
-    {{-- <?php 
+    <?php 
         if(isset($_POST['submit'])){
             $to = "petergforrest91@gmail.com"; // this is your Email address
             $from = $_POST['email']; // this is the sender's Email address
@@ -40,12 +40,12 @@
             echo "Mail Sent. Thank you " . $first_name . ", we will contact you shortly.";
             // You can also use header('Location: thank_you.php'); to redirect to another page.
         }
-    ?> --}}
+    ?>
     
     <h1>Email me</h1>
 
     <div class="text-center">
-        <a class="btn btn-primary" href="{{route('mail.user')}}">Email <span class="glyphicon glyphicon-chevron-right"></span></a>
+        <a class="btn btn-primary" href="{{route('mail')}}">Email <span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
 
 

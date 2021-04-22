@@ -16,9 +16,10 @@ class userRequestMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
         //
+        $this->data = $data;
     }
 
     /**
@@ -28,6 +29,10 @@ class userRequestMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.sendMailToUser');
+        return $this->from('petergforrest91@gmail.com')
+                    ->subject('Email Request')
+                    ->view('sendMailToUser')
+                    ->with('data', $this->data);
+        // return $this->view('mail.sendMailToUser');
     }
 }
