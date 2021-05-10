@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //email
 Route::get('/useremail', 'UserEmailController@index')->name('mail');
-Route::get('/useremail/send', 'UserEmailController@send');
+Route::post('/useremail/send', 'UserEmailController@send');
 
 Route::get('/logout', function() {
     Auth::logout();

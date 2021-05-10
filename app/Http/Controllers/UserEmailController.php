@@ -21,6 +21,7 @@ class UserEmailController extends Controller
             'message' => 'required'
         ]);
         $data = array(
+            'email'     =>  $request->email,
             'name'      =>  $request->name,
             'message'   =>   $request->message
         );
