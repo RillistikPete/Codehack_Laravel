@@ -25,7 +25,7 @@
     <h1>Email me</h1>
 
     <div class="text-center">
-        <a class="btn btn-primary" href="{{route('mail')}}">Email <span class="glyphicon glyphicon-chevron-right"></span></a>
+        <a class="btn btn-primary" href="{{route('mail')}}">Request Email</a>
     </div>
 
 

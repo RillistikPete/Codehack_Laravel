@@ -29,9 +29,10 @@ class userRequestMail extends Mailable
      */
     public function build()
     {
-        return $this->from('petergforrest91@gmail.com')
+        // dd($this->$data);
+        return $this->from('pkgFaculty@gmail.com')
                     ->subject('Email Request')
-                    ->view('sendMailToUser')
+                    ->view('mail.emailBody')
                     ->with('data', $this->data);
         // return $this->view('mail.sendMailToUser');
     }
