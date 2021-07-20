@@ -21,7 +21,6 @@ class ContactController extends Controller
     public function submitContactEmail(Request $request)
     {
         $user = Auth::user();
-        $email = "fpkfaculty@gmail.com";
 
         Mail::send('email.sendemail',[
             'name' => $request->name,
@@ -30,7 +29,7 @@ class ContactController extends Controller
             'user' => $user
         ], function($mail) use ($request){
             // $mail->from(env('MAIL_FROM_ADDRESS'), $request->name);
-            $mail->from($email, $request->name);
+            $mail->from("fpkfaculty@gmail.com", $request->name);
             $mail->to("fpkfaculty@gmail.com")->subject('User Contact Email');
         });
 
