@@ -14,6 +14,9 @@ use App\User;
 use \Unisharp\LaravelFilemanager;
 // use Illuminate\Support\Facades\Route;
 // use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\MailController;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserEmail;
 
 Route::get('/', 'HomeController@index');
 
@@ -23,8 +26,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //email
-Route::get('/useremail', 'UserEmailController@index')->name('mail');
-Route::post('/useremail/send', 'UserEmailController@send');
+Route::get('/send-email', [MailController::class], 'sendEmail');
+Route::get('/contact', 'ContactController@contact');
+Route::post('/contact', 'ContactController@submitContactEmail')->name('contact.submit');
+
+// Route::get('/email', function() {
+//     Mail::to('email@email.com')->send(new UserEmail());
+//     return new UserEmail();
+// });
 
 Route::get('/logout', function() {
     Auth::logout();

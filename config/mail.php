@@ -57,8 +57,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'pkgFaculty@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'pkgFaculty'),
+        'address' => env('MAIL_FROM_ADDRESS', 'fpkfaculty@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'fpkfaculty'),
     ],
 
     /*
@@ -86,9 +86,9 @@ return [
     |
     */
 
-    'username' => env('pkgFaculty'),
+    'username' => env('MAIL_USERNAME'),
 
-    'password' => env('ssppt4nPK'),
+    'password' => env('MAIL_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------

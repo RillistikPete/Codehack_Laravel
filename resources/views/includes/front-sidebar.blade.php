@@ -19,15 +19,8 @@
             <h4>Laravel Blog</h4>
             <p>This blog was built with Laravel 5.7. To comment on existing posts, login or register a new account. 
                 You will be assigned as a subscriber. If you have an idea for a post, contact me and I'll grant you the role "author",
-                allowing you to leave posts. Reach me at my <a href="/me#contact">email.</a></p>
+                allowing you to leave posts. Reach me at my <a href="/contact">email.</a></p>
     </div>
-    
-    <h1>Email me</h1>
-
-    <div class="text-center">
-        <a class="btn btn-primary" href="{{route('mail')}}">Request Email</a>
-    </div>
-
 
     <!-- Blog Categories Well -->
     <div class="well">
@@ -50,6 +43,11 @@
             </div>  <!-- /.col-lg-6 -->
 
         </div> <!-- /.row -->
+    </div>
+
+    <div class="well text-center">
+        <h3 style="margin-top:-10px;">Contact Me</h3>
+        <a class="btn btn-primary" href="/contact">Send Me An Email</a>
     </div>
 </div>
 

@@ -9,6 +9,7 @@
 </div> --}}
 
 <div class="row">
+    @include('flash::message')
 
     <div class="col-md-8">
 
