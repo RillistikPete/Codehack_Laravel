@@ -32,13 +32,6 @@ class ContactController extends Controller
             $mail->to("fpkfaculty@gmail.com")->subject('User Contact Email');
         });
 
-        // $posts = Post::orderBy('created_at', 'desc')->paginate(9);
-        // $postComments = Post::with('comments')->orderBy('created_at', 'desc')->get();
-        // $comments = Comment::all();
-        // $categories = Category::all();
-
-        // $request->session()->flash('contact_message', 'Your email has been sent successfully.');
-
         flash('Your email has been sent successfully.');
 
         return view('email/contact', compact('user'));
