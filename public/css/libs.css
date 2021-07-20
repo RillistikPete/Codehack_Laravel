@@ -8809,3 +8809,7 @@ body {
 #postTitle a:hover {
     text-shadow: 0 0 1.1px #245076;
 }
+
+.alert-info {
+    background-color: #79c99e !important;
+}
