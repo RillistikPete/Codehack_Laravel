@@ -28,9 +28,9 @@ class ContactController extends Controller
             'msg' => $request->msg,
             'user' => $user
         ], function($mail) use ($request){
-            // $mail->from(env('MAIL_FROM_ADDRESS'), $request->name);
-            $mail->from("fpkfaculty@gmail.com", $request->name);
-            $mail->to("fpkfaculty@gmail.com")->subject('User Contact Email');
+            $mail->from(env('MAIL_FROM_ADDRESS'), $request->name);
+            // $mail->from("fpkfaculty@gmail.com", $request->name);
+            $mail->to(env('MAIL_USERNAME'))->subject('User Contact Email');
         });
 
         flash('Your email has been sent successfully.');
