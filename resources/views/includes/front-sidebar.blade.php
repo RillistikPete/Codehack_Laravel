@@ -47,7 +47,7 @@
 
     <div class="well text-center">
         <h3 style="margin-top:-10px;">Contact Me</h3>
-        <a class="btn btn-primary" href="/contact">Send Me An Email</a>
+        <a class="btn btn-primary" href="/contact">Send An Email</a>
     </div>
 </div>
 

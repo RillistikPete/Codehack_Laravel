@@ -50,7 +50,6 @@ class HomeController extends Controller
             $url = $s3Client->getObjectUrl($bucket, $key);
             array_push($s3ObjectsUrlArray, $url);
         }
-        echo "<script>console.log('obj_url arr- " . json_encode($s3ObjectsUrlArray) . "');</script>";
         //=================================================
         $user = Auth::user();
         $posts = Post::orderBy('created_at', 'desc')->paginate(9);
@@ -59,7 +58,7 @@ class HomeController extends Controller
                 if($post->photo->file){
                     if (str_contains($objUrl, substr($post->photo->file, 8))) {
                         $post->obj_url = $objUrl;
-                        echo "<script>console.log('post->obj_url - " . $post->obj_url . "photo" . $post->photo->file . "');</script>";
+                        // echo "<script>console.log('post->obj_url - " . $post->obj_url . "photo" . $post->photo->file . "');</script>";
                     }
                 }
             }

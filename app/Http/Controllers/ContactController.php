@@ -29,7 +29,6 @@ class ContactController extends Controller
             'user' => $user
         ], function($mail) use ($request){
             $mail->from(env('MAIL_FROM_ADDRESS'), $request->name);
-            // $mail->from("fpkfaculty@gmail.com", $request->name);
             $mail->to(env('MAIL_USERNAME'))->subject('User Contact Email');
         });
 
