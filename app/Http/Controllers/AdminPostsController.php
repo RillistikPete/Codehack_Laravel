@@ -58,6 +58,7 @@ class AdminPostsController extends Controller
             // then move it to the images folder,
             // then create a photo, then in 'Create Post', insert photo id
             $name = str_replace(' ', '-', $file->getClientOriginalName());
+            // $finalName = str_replace('#', '')
             // $file->move('images', $name);
             $file->store($name, 's3');
             $photo = Photo::create(['file'=>$name]);

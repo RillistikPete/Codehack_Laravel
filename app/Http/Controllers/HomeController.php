@@ -96,10 +96,14 @@ class HomeController extends Controller
         $user = Auth::user();
         $post = Post::findBySlug($slug); 
         echo "<script>console.log('post photo file " . $post->photo->file . "')</script>";
+        if (str_contains($post->photo->file, '#')) {
+            $replacedHashtag = str_replace('#', '%23', $post->photo->file);
+            echo "<script>console.log('replacing filename hashtag " . $replacedHashtag . "')</script>";
+        }
         if(!$post->obj_url && $post->photo->file) {
-            echo "<script>console.log('objurl doesnt exist')</script>";
+            echo "<script>console.log('objurl doesnt exist, reload page')</script>";
             foreach($s3ObjectsUrlArray as $obj_url){
-                if (str_contains($obj_url, substr($post->photo->file, 8))) {
+                if (str_contains($obj_url, substr($post->photo->file, 8)) || str_contains($obj_url, substr($replacedHashtag, 8))) {
                     $post->obj_url = $obj_url;
                     $post->save();
                 }
