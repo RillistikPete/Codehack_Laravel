@@ -94,7 +94,8 @@ class HomeController extends Controller
         }
         //=================================================
         $user = Auth::user();
-        $post = Post::findBySlug($slug); 
+        $post = Post::findBySlug($slug);
+        $replacedHashtag;
         echo "<script>console.log('post photo file " . $post->photo->file . "')</script>";
         if (str_contains($post->photo->file, '#')) {
             $replacedHashtag = str_replace('#', '%23', $post->photo->file);
