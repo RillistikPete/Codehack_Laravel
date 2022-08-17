@@ -53,6 +53,8 @@ class AdminPostsController extends Controller
         $user = Auth::user();
 
         //Need to upload to S3 bucket instead of moving to image folder
+        //******* MAY HELP FOR SPEC CHAR PROBLEM */ / 8-9-22
+        //You might want to use Laravel's built-in Str::slug() method to convert that title into something friendlier
         if($file = $request->file('photo_id')) {
             // If you have file, get the original name of it,
             // then move it to the images folder,
